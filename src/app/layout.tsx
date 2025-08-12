@@ -1,18 +1,18 @@
 // src/app/layout.tsx
 
 import type { Metadata } from "next";
-// Libre Baskerville 폰트만 import
-import { Libre_Baskerville } from "next/font/google"; 
+import localFont from "next/font/local";
 import "./globals.css";
 
-// Libre Baskerville 폰트를 설정합니다.
-//    - weight: 사용할 폰트 굵기 (400=normal, 700=bold)
-//    - subsets: 언어 범위 (보통 'latin'을 사용)
-//    - variable: Tailwind CSS와 연동하기 위한 CSS 변수 이름
-const libreBaskerville = Libre_Baskerville({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-libre-baskerville", // CSS 변수 이름 지정
+// Local Libre Baskerville (put files under public/fonts/libre-baskerville)
+const libreBaskerville = localFont({
+  src: [
+    { path: "/fonts/libre-baskerville/LibreBaskerville-Regular.ttf", weight: "400", style: "normal" },
+    { path: "/fonts/libre-baskerville/LibreBaskerville-Bold.ttf", weight: "700", style: "normal" },
+    { path: "/fonts/libre-baskerville/LibreBaskerville-Italic.ttf", weight: "400", style: "italic" },
+  ],
+  variable: "--font-libre-baskerville",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -26,7 +26,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // html과 body 태그 모두에 폰트 변수를 적용합니다.
     <html lang="en" className={`${libreBaskerville.variable}`}>
       <body className={`${libreBaskerville.variable}`}>{children}</body>
     </html>
