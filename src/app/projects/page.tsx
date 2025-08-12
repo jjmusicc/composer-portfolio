@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { useState } from "react";
 import NavBar from "../components/NavBar";
@@ -6,11 +7,13 @@ const categories = ["전체", "영화", "VR", "광고"];
 const projects = [
   {
     category: "영화",
-    title: "단편영화 &lt;제비&gt;",
+    title: "단편영화 <제비>",
     youtube: "https://www.youtube.com/embed/iQ5kwOQogUg",
     desc: (
       <>
-        <div className="italic text-gray-400 mb-3" style={{ fontFamily: 'Questrial, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}>&quot;15년 전에 특별한 곳에 갔었어요.&quot;</div>
+        <div className="italic text-gray-400 mb-3" style={{ fontFamily: 'Questrial, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}>
+          "15년 전에 특별한 곳에 갔었어요."
+        </div>
         <div className="mb-4" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.8' }}>
           민우는 참제비꽃을 구하기 위해 여러 곳을 다니다 인터넷의 도움으로 미정의 꽃집까지 다다른다.<br/>
           사람들이 잘 찾지 않는, 하지만 자신이 좋아하는,<br/>
@@ -25,11 +28,11 @@ const projects = [
   },
   {
     category: "VR",
-    title: "VR 영화 &lt;ScareCrow&gt;",
+    title: "VR 영화 <ScareCrow>",
     youtube: "https://www.youtube.com/embed/DVREQhBETc4",
     desc: (
       <>
-        <div className="italic text-gray-400 mb-3" style={{ fontFamily: 'Questrial, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}>삽입곡 &apos;Play with flower&apos;</div>
+        <div className="italic text-gray-400 mb-3" style={{ fontFamily: 'Questrial, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}>삽입곡 'Play with flower'</div>
         <div className="mb-4" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.8' }}>
           한국예술종합학교와 함께 제작되었으며<br/>
           작곡으로 참여하였습니다.
@@ -43,7 +46,7 @@ const projects = [
   },
   {
     category: "음악",
-    title: "&lt;My own Private Beach&gt; Main Title Music #페루의 바다 #새벽",
+    title: "<My own Private Beach> Main Title Music #페루의 바다 #새벽",
     youtube: "https://www.youtube.com/embed/iOSlliKfJjk",
     desc: (
       <>
@@ -53,7 +56,7 @@ const projects = [
   },
   {
     category: "애니메이션",
-    title: "&lt;마법천자문 시리즈 애니메이션&gt; 00:30~00:45 및 SFX를 제외한 모든 음악 작곡 #애니메이션 #동양",
+    title: "<마법천자문 시리즈 애니메이션> 00:30~00:45 및 SFX를 제외한 모든 음악 작곡 #애니메이션 #동양",
     youtube: "https://www.youtube.com/embed/7MLYDoqoaaA",
     desc: (
       <>
@@ -63,7 +66,7 @@ const projects = [
   },
   {
     category: "음악",
-    title: "&lt;초대&gt; Main Title Music #재즈 #겨울",
+    title: "<초대> Main Title Music #재즈 #겨울",
     soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/prqgdmpyq2fl&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     desc: (
       <>
@@ -73,17 +76,7 @@ const projects = [
   },
   {
     category: "음악",
-    title: "아버지와 아들 #느린 #감정적인",
-    soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/ygyhyv3qm9oh&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
-    desc: (
-      <>
-        <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
-      </>
-    ),
-  },
-  {
-    category: "음악",
-    title: "&lt;순이&gt; 조심스러운 성공 #신비로운 #살금살금",
+    title: "<순이> 조심스러운 성공 #신비로운 #살금살금",
     soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/iiwr4ytfd6iq&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     desc: (
       <>
@@ -93,57 +86,7 @@ const projects = [
   },
   {
     category: "음악",
-    title: "커피를 들고 집으로 #흥미진진한 #모험",
-    soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/yclp0vsjwy4w&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
-    desc: (
-      <>
-        <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
-      </>
-    ),
-  },
-  {
-    category: "음악",
-    title: "잔잔한 웃음 #밝은 #감동적인",
-    soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/9ksoxycpagfe&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
-    desc: (
-      <>
-        <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
-      </>
-    ),
-  },
-  {
-    category: "음악",
-    title: "[정이로운 이들이여] Main OST #스릴러 #음산한",
-    soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/oyiezt2wvgbv&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
-    desc: (
-      <>
-        <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
-      </>
-    ),
-  },
-  {
-    category: "음악",
-    title: "[아트필름] 어항과 물고기 #신비로운 #긴장감",
-    soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/wrbshqphekjy&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
-    desc: (
-      <>
-        <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
-      </>
-    ),
-  },
-  {
-    category: "음악",
-    title: "희망의 바다 #그리움 #희망 #엔딩송",
-    soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/rzuuic2tmllc&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
-    desc: (
-      <>
-        <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
-      </>
-    ),
-  },
-  {
-    category: "음악",
-    title: "&lt;JIMICHOO&gt; Title Music #보컬 #팝",
+    title: "<JIMICHOO> Title Music #보컬 #팝",
     youtube: "https://www.youtube.com/embed/ogs3jgqSTNA",
     desc: (
       <>
