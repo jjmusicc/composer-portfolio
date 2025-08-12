@@ -1,5 +1,6 @@
 
 import Image from "next/image";
+import NavBar from "./components/NavBar";
 
 const profile = [
   { year: "2020", work: "Sundance 영화제 초청작 <ScareCrow>", role: "Composer" },
@@ -29,13 +30,16 @@ const profile = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black font-sans">
+      {/* 네비게이션 바 추가 */}
+      <NavBar />
+      
       {/* 본문 */}
       <main className="max-w-6xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-12 items-start mb-24">
           {/* 왼쪽: 소개/프로필 */}
           <div className="min-w-[340px] max-w-[480px] flex flex-col -mt-6">
             <div className="text-xs text-gray-400 mb-2" style={{ paddingTop: 0 }}>Aenean felis</div>
-            <h2 className="text-3xl font-sans font-normal mb-2 mt-10 !font-sans">ABOUT US</h2>
+            <div className="font-libre-baskerville text-3xl font-bold mb-2 mt-10">ABOUT US</div>
             <div
               style={{
                 width: '51px',

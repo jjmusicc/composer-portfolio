@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import NavBar from "../components/NavBar";
 
 const categories = ["전체", "영화", "VR", "광고"];
 const projects = [
@@ -329,379 +330,384 @@ export default function ProjectsPage() {
   const filtered = selected === "전체" ? projects : projects.filter(p => p.category === selected);
 
   return (
-    <div className="min-h-screen bg-white text-black font-sans px-4 py-12">
-      {/* 상단 타이틀/서브타이틀 */}
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start mb-8">
-        <div className="text-3xl md:text-4xl font-serif font-light mb-4 md:mb-0">Filmography & Me.</div>
-        <div className="text-sm text-gray-500 mt-2 md:mt-0 md:text-right">Music Director / Producer / Composer</div>
-      </div>
-      {/* 카테고리 네비 */}
-      <nav className="flex gap-12 justify-center mb-2">
-        {categories.map(cat => (
-          <button
-            key={cat}
-            onClick={() => setSelected(cat)}
-            className={
-              "relative pb-2 text-lg font-light " +
-              (selected === cat ? "font-semibold" : "")
-            }
-            style={{ letterSpacing: "0.08em" }}
-          >
-            {cat}
-            {selected === cat && (
-              <span className="block absolute left-1/2 -translate-x-1/2 bottom-0 w-12 h-[2px] bg-gray-300" style={{ opacity: 0.3, borderRadius: '4px' }}></span>
-            )}
-          </button>
-        ))}
-      </nav>
-      {/* 구분선 */}
-      <div className="h-px w-full max-w-[900px] bg-gray-200 opacity-60 mx-auto mb-12 mt-2"></div>
-      {/* 프로젝트 리스트 */}
-      <div className="max-w-6xl mx-auto flex flex-col gap-16">
-        {/* 2단 구조: 단편영화 <제비>, VR 영화 <ScareCrow> */}
-        {filtered.filter(p => p.title.includes("제비") || p.title.includes("ScareCrow")).map((p, i) => (
-          <div key={i} className="flex flex-row gap-8 items-start">
-            <div className="w-[555px] flex-shrink-0 min-w-0">
-              <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '555px', height: '311.91px' }}>
-                <iframe
-                  width={555}
-                  height={311.91}
-                  src={p.youtube}
-                  title={p.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                  style={{ width: '555px', height: '311.91px' }}
-                ></iframe>
-              </div>
-            </div>
-            <div className="flex-1 min-w-0 font-sans">
-              <div className="mb-4" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '23px', lineHeight: '1.3' }}>{p.title}</div>
-              {p.desc}
-            </div>
-          </div>
-        ))}
-        {/* 2개 한 줄: My own~ & 마법천자문 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {filtered.filter(p => p.title.includes("My own") || p.title.includes("마법천자문")).map((p, i) => (
-            <div key={i} className="flex flex-col items-start">
-              <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '555px', height: '311.91px' }}>
-                <iframe
-                  width={555}
-                  height={311.91}
-                  src={p.youtube}
-                  title={p.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                  style={{ width: '555px', height: '311.91px' }}
-                ></iframe>
-              </div>
-              <div className="font-sans text-gray-700 mt-4">
-                {p.title && <div className="font-semibold mb-3" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>}
-                {p.desc}
-              </div>
-            </div>
-          ))}
+    <div className="min-h-screen bg-white text-black font-sans">
+      {/* 네비게이션 바 추가 */}
+      <NavBar />
+      
+      <div className="px-4 py-12">
+        {/* 상단 타이틀/서브타이틀 */}
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start mb-8">
+          <div className="text-3xl md:text-4xl font-serif font-light mb-4 md:mb-0">Filmography & Me.</div>
+          <div className="text-sm text-gray-500 mt-2 md:mt-0 md:text-right">Music Director / Producer / Composer</div>
         </div>
-        
-        {/* 사운드클라우드 음악 프로젝트들 - 첫 번째 줄 (2개) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {filtered.filter(p => p.soundcloud && (p.title.includes("초대") || p.title.includes("아버지와 아들"))).map((p, i) => (
-            <div key={i} className="flex flex-col items-start">
-              <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '555px', height: '311.91px' }}>
-                <iframe
-                  width={555}
-                  height={311.91}
-                  src={p.soundcloud}
-                  title={p.title}
-                  frameBorder="0"
-                  allow="autoplay"
-                  className="w-full h-full"
-                  style={{ width: '555px', height: '311.91px' }}
-                ></iframe>
-              </div>
-              <div className="font-sans text-gray-700 mt-4 w-full">
-                <div className="font-semibold mb-3" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
-                {p.desc}
-              </div>
-            </div>
+        {/* 카테고리 네비 */}
+        <nav className="flex gap-12 justify-center mb-2">
+          {categories.map(cat => (
+            <button
+              key={cat}
+              onClick={() => setSelected(cat)}
+              className={
+                "relative pb-2 text-lg font-light " +
+                (selected === cat ? "font-semibold" : "")
+              }
+              style={{ letterSpacing: "0.08em" }}
+            >
+              {cat}
+              {selected === cat && (
+                <span className="block absolute left-1/2 -translate-x-1/2 bottom-0 w-12 h-[2px] bg-gray-300" style={{ opacity: 0.3, borderRadius: '4px' }}></span>
+              )}
+            </button>
           ))}
-        </div>
-        
-        {/* 사운드클라우드 프로젝트들 - 첫 번째 줄 (조심스러운 성공, 커피, 잔잔한 웃음) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {filtered.filter(p => p.soundcloud && (p.title.includes("조심스러운 성공") || p.title.includes("커피") || p.title.includes("잔잔한 웃음"))).map((p, i) => (
-            <div key={i} className="flex flex-col items-start">
-              <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
-                <iframe
-                  width="100%"
-                  height="166"
-                  src={p.soundcloud}
-                  title={p.title}
-                  frameBorder="0"
-                  allow="autoplay"
-                  className="w-full h-full"
-                ></iframe>
-              </div>
-              <div className="font-sans text-gray-700 mt-4 w-full">
-                <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
-                {p.desc}
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* 사운드클라우드 프로젝트들 - 두 번째 줄 (정이로운 이들이여, 어항과 물고기, 희망의 바다) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {filtered.filter(p => p.soundcloud && (p.title.includes("정이로운 이들이여") || p.title.includes("어항과 물고기") || p.title.includes("희망의 바다"))).map((p, i) => (
-            <div key={i} className="flex flex-col items-start">
-              <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
-                <iframe
-                  width="100%"
-                  height="166"
-                  src={p.soundcloud}
-                  title={p.title}
-                  frameBorder="0"
-                  allow="autoplay"
-                  className="w-full h-full"
-                ></iframe>
-              </div>
-              <div className="font-sans text-gray-700 mt-4 w-full">
-                <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
-                {p.desc}
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* YouTube 프로젝트들 - 세 번째 줄 (JIMICHOO, Club Scene, 만남 Scene, 코믹 Scene) */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {filtered.filter(p => p.youtube && (p.title.includes("JIMICHOO") || p.title.includes("Club Scene") || p.title.includes("만남 Scene") || p.title.includes("코믹 Scene"))).map((p, i) => (
-            <div key={i} className="flex flex-col items-start">
-              <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
-                <iframe
-                  width="100%"
-                  height="166"
-                  src={p.youtube}
-                  title={p.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                ></iframe>
-              </div>
-              <div className="font-sans text-gray-700 mt-4 w-full">
-                <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
-                {p.desc}
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* 새로운 사운드클라우드 프로젝트들 - 4개 (Time With Mom, Mom's coffee machine, 그녀의 뒷모습, Coffee Practice) */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {filtered.filter(p => p.soundcloud && (p.title.includes("Time With Mom") || p.title.includes("Mom's coffee machine") || p.title.includes("그녀의 뒷모습") || p.title.includes("Coffee Practice"))).map((p, i) => (
-            <div key={i} className="flex flex-col items-start">
-              <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
-                <iframe
-                  width="100%"
-                  height="166"
-                  src={p.soundcloud}
-                  title={p.title}
-                  frameBorder="0"
-                  allow="autoplay"
-                  className="w-full h-full"
-                ></iframe>
-              </div>
-              <div className="font-sans text-gray-700 mt-4 w-full">
-                <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
-                {p.desc}
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* 새로운 사운드클라우드 프로젝트들 - 3개 (꿈을 좇아서, 환생, 개판 5분 전) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {filtered.filter(p => p.soundcloud && (p.title.includes("꿈을 좇아서") || p.title.includes("환생") || p.title.includes("개판 5분 전"))).map((p, i) => (
-            <div key={i} className="flex flex-col items-start">
-              <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
-                <iframe
-                  width="100%"
-                  height="166"
-                  src={p.soundcloud}
-                  title={p.title}
-                  frameBorder="0"
-                  allow="autoplay"
-                  className="w-full h-full"
-                ></iframe>
-              </div>
-              <div className="font-sans text-gray-700 mt-4 w-full">
-                <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
-                {p.desc}
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* 새로운 유튜브 프로젝트들 - 3개 (로봇키튼 재난 대피, On Feelings, Fantasy Royal VR) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {filtered.filter(p => p.youtube && (p.title.includes("재난 대피 장면") || p.title.includes("On Feelings") || p.title.includes("Fantasy Royal VR"))).map((p, i) => (
-            <div key={i} className="flex flex-col items-start">
-              <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
-                <iframe
-                  width="100%"
-                  height="166"
-                  src={p.youtube}
-                  title={p.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                ></iframe>
-              </div>
-              <div className="font-sans text-gray-700 mt-4 w-full">
-                <div className="font-semibold mb-2" style={{ 
-                  fontFamily: 'Noto Sans KR, sans-serif', 
-                  fontSize: p.title.includes("경기학생안전체험관") ? '11px' : '13px', 
-                  lineHeight: '1.3',
-                  color: p.title.includes("경기학생안전체험관") ? '#888888' : 'inherit'
-                }}>{p.title}</div>
-                {p.desc}
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* 새로운 유튜브 프로젝트들 - 4개 (로봇키튼 시리즈) */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {filtered.filter(p => p.youtube && (p.title.includes("평화로운 교실") || p.title.includes("화재 대피 직전") || p.title.includes("발화 장면") || p.title.includes("재난 대피 후 재회"))).map((p, i) => (
-            <div key={i} className="flex flex-col items-start">
-              <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
-                <iframe
-                  width="100%"
-                  height="166"
-                  src={p.youtube}
-                  title={p.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                ></iframe>
-              </div>
-              <div className="font-sans text-gray-700 mt-4 w-full">
-                <div className="font-semibold mb-2" style={{ 
-                  fontFamily: 'Noto Sans KR, sans-serif', 
-                  fontSize: '11px', 
-                  lineHeight: '1.3',
-                  color: '#888888'
-                }}>{p.title}</div>
-                {p.desc}
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* 크레딧 섹션 */}
-        <div className="mt-8 mb-16">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* 왼쪽: 비상 포스터 이미지 */}
-              <div className="flex justify-center lg:justify-start">
-                <div className="relative">
-                  <img 
-                    src="/bisang-poster.jpg" 
-                    alt="단편영화 비상 포스터" 
-                    className="w-full max-w-md rounded-lg shadow-lg"
-                    style={{ maxHeight: '600px', objectFit: 'cover' }}
-                  />
+        </nav>
+        {/* 구분선 */}
+        <div className="h-px w-full max-w-[900px] bg-gray-200 opacity-60 mx-auto mb-12 mt-2"></div>
+        {/* 프로젝트 리스트 */}
+        <div className="max-w-6xl mx-auto flex flex-col gap-16">
+          {/* 2단 구조: 단편영화 <제비>, VR 영화 <ScareCrow> */}
+          {filtered.filter(p => p.title.includes("제비") || p.title.includes("ScareCrow")).map((p, i) => (
+            <div key={i} className="flex flex-row gap-8 items-start">
+              <div className="w-[555px] flex-shrink-0 min-w-0">
+                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '555px', height: '311.91px' }}>
+                  <iframe
+                    width={555}
+                    height={311.91}
+                    src={p.youtube}
+                    title={p.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                    style={{ width: '555px', height: '311.91px' }}
+                  ></iframe>
                 </div>
               </div>
-              
-              {/* 오른쪽: 크레딧 정보 */}
-              <div className="space-y-6">
-                <div>
-                  <h2 className="mb-4" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '23px', fontWeight: 'bold', color: '#212327' }}>
-                    단편영화 &lt;비상&gt;
-                  </h2>
-                  <p className="text-gray-700 leading-relaxed mb-6" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.8' }}>
-                    청소년기 꿈을 가진 학생들의 성장스토리를 영상으로 풀어낸 작품으로<br />
-                    부모와의 갈등, 다양한 난관을 이겨내는<br />
-                    학생들의 열정과 도전에 관한 이야기입니다.<br />
-                    음악 감독으로 참여하였습니다.
-                  </p>
+              <div className="flex-1 min-w-0 font-sans">
+                <div className="mb-4" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '23px', lineHeight: '1.3' }}>{p.title}</div>
+                {p.desc}
+              </div>
+            </div>
+          ))}
+          {/* 2개 한 줄: My own~ & 마법천자문 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {filtered.filter(p => p.title.includes("My own") || p.title.includes("마법천자문")).map((p, i) => (
+              <div key={i} className="flex flex-col items-start">
+                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '555px', height: '311.91px' }}>
+                  <iframe
+                    width={555}
+                    height={311.91}
+                    src={p.youtube}
+                    title={p.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                    style={{ width: '555px', height: '311.91px' }}
+                  ></iframe>
+                </div>
+                <div className="font-sans text-gray-700 mt-4">
+                  {p.title && <div className="font-semibold mb-3" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>}
+                  {p.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* 사운드클라우드 음악 프로젝트들 - 첫 번째 줄 (2개) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {filtered.filter(p => p.soundcloud && (p.title.includes("초대") || p.title.includes("아버지와 아들"))).map((p, i) => (
+              <div key={i} className="flex flex-col items-start">
+                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '555px', height: '311.91px' }}>
+                  <iframe
+                    width={555}
+                    height={311.91}
+                    src={p.soundcloud}
+                    title={p.title}
+                    frameBorder="0"
+                    allow="autoplay"
+                    className="w-full h-full"
+                    style={{ width: '555px', height: '311.91px' }}
+                  ></iframe>
+                </div>
+                <div className="font-sans text-gray-700 mt-4 w-full">
+                  <div className="font-semibold mb-3" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                  {p.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* 사운드클라우드 프로젝트들 - 첫 번째 줄 (조심스러운 성공, 커피, 잔잔한 웃음) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {filtered.filter(p => p.soundcloud && (p.title.includes("조심스러운 성공") || p.title.includes("커피") || p.title.includes("잔잔한 웃음"))).map((p, i) => (
+              <div key={i} className="flex flex-col items-start">
+                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                  <iframe
+                    width="100%"
+                    height="166"
+                    src={p.soundcloud}
+                    title={p.title}
+                    frameBorder="0"
+                    allow="autoplay"
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+                <div className="font-sans text-gray-700 mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                  {p.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* 사운드클라우드 프로젝트들 - 두 번째 줄 (정이로운 이들이여, 어항과 물고기, 희망의 바다) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {filtered.filter(p => p.soundcloud && (p.title.includes("정이로운 이들이여") || p.title.includes("어항과 물고기") || p.title.includes("희망의 바다"))).map((p, i) => (
+              <div key={i} className="flex flex-col items-start">
+                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                  <iframe
+                    width="100%"
+                    height="166"
+                    src={p.soundcloud}
+                    title={p.title}
+                    frameBorder="0"
+                    allow="autoplay"
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+                <div className="font-sans text-gray-700 mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                  {p.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* YouTube 프로젝트들 - 세 번째 줄 (JIMICHOO, Club Scene, 만남 Scene, 코믹 Scene) */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {filtered.filter(p => p.youtube && (p.title.includes("JIMICHOO") || p.title.includes("Club Scene") || p.title.includes("만남 Scene") || p.title.includes("코믹 Scene"))).map((p, i) => (
+              <div key={i} className="flex flex-col items-start">
+                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                  <iframe
+                    width="100%"
+                    height="166"
+                    src={p.youtube}
+                    title={p.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+                <div className="font-sans text-gray-700 mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                  {p.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* 새로운 사운드클라우드 프로젝트들 - 4개 (Time With Mom, Mom's coffee machine, 그녀의 뒷모습, Coffee Practice) */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {filtered.filter(p => p.soundcloud && (p.title.includes("Time With Mom") || p.title.includes("Mom's coffee machine") || p.title.includes("그녀의 뒷모습") || p.title.includes("Coffee Practice"))).map((p, i) => (
+              <div key={i} className="flex flex-col items-start">
+                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                  <iframe
+                    width="100%"
+                    height="166"
+                    src={p.soundcloud}
+                    title={p.title}
+                    frameBorder="0"
+                    allow="autoplay"
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+                <div className="font-sans text-gray-700 mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                  {p.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* 새로운 사운드클라우드 프로젝트들 - 3개 (꿈을 좇아서, 환생, 개판 5분 전) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {filtered.filter(p => p.soundcloud && (p.title.includes("꿈을 좇아서") || p.title.includes("환생") || p.title.includes("개판 5분 전"))).map((p, i) => (
+              <div key={i} className="flex flex-col items-start">
+                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                  <iframe
+                    width="100%"
+                    height="166"
+                    src={p.soundcloud}
+                    title={p.title}
+                    frameBorder="0"
+                    allow="autoplay"
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+                <div className="font-sans text-gray-700 mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                  {p.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* 새로운 유튜브 프로젝트들 - 3개 (로봇키튼 재난 대피, On Feelings, Fantasy Royal VR) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {filtered.filter(p => p.youtube && (p.title.includes("재난 대피 장면") || p.title.includes("On Feelings") || p.title.includes("Fantasy Royal VR"))).map((p, i) => (
+              <div key={i} className="flex flex-col items-start">
+                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                  <iframe
+                    width="100%"
+                    height="166"
+                    src={p.youtube}
+                    title={p.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+                <div className="font-sans text-gray-700 mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ 
+                    fontFamily: 'Noto Sans KR, sans-serif', 
+                    fontSize: p.title.includes("경기학생안전체험관") ? '11px' : '13px', 
+                    lineHeight: '1.3',
+                    color: p.title.includes("경기학생안전체험관") ? '#888888' : 'inherit'
+                  }}>{p.title}</div>
+                  {p.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* 새로운 유튜브 프로젝트들 - 4개 (로봇키튼 시리즈) */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {filtered.filter(p => p.youtube && (p.title.includes("평화로운 교실") || p.title.includes("화재 대피 직전") || p.title.includes("발화 장면") || p.title.includes("재난 대피 후 재회"))).map((p, i) => (
+              <div key={i} className="flex flex-col items-start">
+                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                  <iframe
+                    width="100%"
+                    height="166"
+                    src={p.youtube}
+                    title={p.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+                <div className="font-sans text-gray-700 mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ 
+                    fontFamily: 'Noto Sans KR, sans-serif', 
+                    fontSize: '11px', 
+                    lineHeight: '1.3',
+                    color: '#888888'
+                  }}>{p.title}</div>
+                  {p.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* 크레딧 섹션 */}
+          <div className="mt-8 mb-16">
+            <div className="max-w-6xl mx-auto px-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                {/* 왼쪽: 비상 포스터 이미지 */}
+                <div className="flex justify-center lg:justify-start">
+                  <div className="relative">
+                    <img 
+                      src="/bisang-poster.jpg" 
+                      alt="단편영화 비상 포스터" 
+                      className="w-full max-w-md rounded-lg shadow-lg"
+                      style={{ maxHeight: '600px', objectFit: 'cover' }}
+                    />
+                  </div>
                 </div>
                 
-                <div>
-                  <h3 className="mb-4" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', fontWeight: 'normal', color: '#666666' }}>
-                    그 외 작품활동
-                  </h3>
-                  <div className="space-y-2">
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2020</span>    ·   Sundance 영화제 초청작 &lt;ScareCrow&gt;                 /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2020</span>    ·   [ALIVE HALL] 작곡가 류희천 &lt;Rhyzome&gt;               /Assistant Director
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2020</span>    ·   경기학생안전체험관 4D 애니메이션 ‌‌‌‌&lt;로봇키튼&gt;      /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2020</span>    ·   LG U+ AR 드라마  &lt;어린왕자&gt;                                      /Composer, Arrangement
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2021</span>    ·  [세종문화회관] 작곡가 류희천 &lt;Kaleidoscope&gt; (Personas for Modern) / Assistant Director
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2021</span>    ·   단편영화  &lt;비상&gt;                                                              /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2021</span>    ·   용감한 소방차 레이 동요 &lt;ABC, One Two Three&gt;  /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2021</span>    ·   동덕여자대학교 미디어디자인 국악 프로젝트 &lt;국악나래&gt; /Composer, Sound design
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2021</span>    ·   STEAM Game  &lt;Fantasy Royal VR&gt;                         /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;생일&gt;                                                              /Composer‌ 
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;JIMICHOO&gt;                                                 /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;초대&gt;                                                              /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;내 편이 필요할 때&gt;  (예정 )                         /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;꽃으로도&gt;   (예정)                                         /Composer‌
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2022</span>    ·   공모전       &lt;광주 지역 홍보영상&gt;                                     /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;My Playa Privada&gt;                                     /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;대화&gt;                                                                /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;제비&gt; 와세다大 국제화해영화제 수상            /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;순이&gt;                                                                /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;정이로운 이들이여&gt;                                       /Composer
-                    </div>
-                    <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
-                      <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;주부해커단&gt;                                                    /Composer
+                {/* 오른쪽: 크레딧 정보 */}
+                <div className="space-y-6">
+                  <div>
+                    <h2 className="mb-4" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '23px', fontWeight: 'bold', color: '#212327' }}>
+                      단편영화 &lt;비상&gt;
+                    </h2>
+                    <p className="text-gray-700 leading-relaxed mb-6" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.8' }}>
+                      청소년기 꿈을 가진 학생들의 성장스토리를 영상으로 풀어낸 작품으로<br />
+                      부모와의 갈등, 다양한 난관을 이겨내는<br />
+                      학생들의 열정과 도전에 관한 이야기입니다.<br />
+                      음악 감독으로 참여하였습니다.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="mb-4" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', fontWeight: 'normal', color: '#666666' }}>
+                      그 외 작품활동
+                    </h3>
+                    <div className="space-y-2">
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2020</span>    ·   Sundance 영화제 초청작 &lt;ScareCrow&gt;                 /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2020</span>    ·   [ALIVE HALL] 작곡가 류희천 &lt;Rhyzome&gt;               /Assistant Director
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2020</span>    ·   경기학생안전체험관 4D 애니메이션 ‌‌‌‌&lt;로봇키튼&gt;      /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2020</span>    ·   LG U+ AR 드라마  &lt;어린왕자&gt;                                      /Composer, Arrangement
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2021</span>    ·  [세종문화회관] 작곡가 류희천 &lt;Kaleidoscope&gt; (Personas for Modern) / Assistant Director
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2021</span>    ·   단편영화  &lt;비상&gt;                                                              /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2021</span>    ·   용감한 소방차 레이 동요 &lt;ABC, One Two Three&gt;  /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2021</span>    ·   동덕여자대학교 미디어디자인 국악 프로젝트 &lt;국악나래&gt; /Composer, Sound design
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2021</span>    ·   STEAM Game  &lt;Fantasy Royal VR&gt;                         /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;생일&gt;                                                              /Composer‌ 
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;JIMICHOO&gt;                                                 /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;초대&gt;                                                              /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;내 편이 필요할 때&gt;  (예정 )                         /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;꽃으로도&gt;   (예정)                                         /Composer‌
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2022</span>    ·   공모전       &lt;광주 지역 홍보영상&gt;                                     /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;My Playa Privada&gt;                                     /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;대화&gt;                                                                /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;제비&gt; 와세다大 국제화해영화제 수상            /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;순이&gt;                                                                /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;정이로운 이들이여&gt;                                       /Composer
+                      </div>
+                      <div style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '12px', color: '#666666', lineHeight: '1.6' }}>
+                        <span style={{ fontWeight: 'bold' }}>2022</span>    ·   단편영화   &lt;주부해커단&gt;                                                    /Composer
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -28,15 +28,15 @@ export default function NavBar() {
   return (
     <header>
       <div className="max-w-3xl mx-auto flex flex-col items-center py-8">
-        <div className="font-librebaskerville font-bold text-[44px] tracking-[-1px] mb-12 mt-8">J&J Music.</div>
+        <div className="font-libre-baskerville font-bold text-[44px] tracking-[-1px] mb-12 mt-8">J&J Music.</div>
         <nav>
-          <ul className="flex gap-8 text-sm tracking-widest font-extralight mt-0">
+          <ul className="flex gap-8 text-sm tracking-widest font-light mt-0">
             {navs.map((nav) => (
               <li key={nav.name} className="relative">
                 {nav.name === "CONTACT" ? (
                   <button
                     onClick={handleContactClick}
-                    className="hover:underline font-playfair font-thin tracking-wider text-[13px] opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+                    className="hover:underline font-playfair font-light tracking-wider text-[13px] opacity-85 hover:opacity-100 transition-opacity cursor-pointer"
                     style={{ color: "#212327" }}
                   >
                     {nav.name}
@@ -44,7 +44,7 @@ export default function NavBar() {
                 ) : (
                   <Link
                     href={nav.href}
-                    className="hover:underline font-playfair font-thin tracking-wider text-[13px] opacity-80 hover:opacity-100 transition-opacity"
+                    className="hover:underline font-playfair font-light tracking-wider text-[13px] opacity-85 hover:opacity-100 transition-opacity"
                     style={{ color: "#212327" }}
                   >
                     {nav.name}
@@ -55,7 +55,7 @@ export default function NavBar() {
                   null
                 ) : (
                   pathname === nav.href && (
-                    <span className="block absolute left-1/2 -translate-x-1/2 bottom-[-6px] w-16 h-[0.5px] bg-black rounded opacity-30"></span>
+                    <span className="block absolute left-1/2 -translate-x-1/2 bottom-[-6px] w-16 h-[0.5px] bg-black rounded opacity-45"></span>
                   )
                 )}
               </li>
@@ -63,7 +63,7 @@ export default function NavBar() {
           </ul>
         </nav>
       </div>
-      <div className="h-px w-full max-w-[1120px] bg-gray-300 opacity-40 mx-auto mt-5"></div>
+      <div className="h-px w-full max-w-[1120px] bg-gray-300 opacity-50 mx-auto mt-5"></div>
     </header>
   );
 }

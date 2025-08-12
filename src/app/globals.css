@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -24,23 +22,11 @@
 body {
   background: #fff;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-.font-merriweather {
-  font-family: 'Merriweather', serif;
-}
-
-.font-ebgaramond {
-  font-family: 'EB Garamond', serif;
-}
-
-.font-lora {
-  font-family: 'Lora', serif;
-}
-
-.font-librebaskerville {
-  font-family: 'Libre Baskerville', serif;
+/* Libre Baskerville 폰트 직접 적용 */
+.font-libre-baskerville {
+  font-family: var(--font-libre-baskerville), serif !important;
 }
 
 @tailwind base;
