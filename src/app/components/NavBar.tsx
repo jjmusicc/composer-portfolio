@@ -1,10 +1,13 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function NavBar() {
   const pathname = usePathname();
   const router = useRouter();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   const navs = [
     { name: "HOME", href: "/" },
     { name: "PROJECTS", href: "/projects" },
@@ -13,6 +16,7 @@ export default function NavBar() {
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    setIsMenuOpen(false); // 모바일 메뉴 닫기
     if (pathname === "/") {
       // 메인 페이지에 있을 때는 푸터로 스크롤
       document.getElementById('contact-footer')?.scrollIntoView({ behavior: 'smooth' });
@@ -25,27 +29,33 @@ export default function NavBar() {
     }
   };
 
+  const handleNavClick = () => {
+    setIsMenuOpen(false); // 모바일 메뉴 닫기
+  };
+
   return (
-    <header>
-      <div className="max-w-3xl mx-auto flex flex-col items-center py-8">
-        <div className="font-libre-baskerville font-bold text-[44px] tracking-[-1px] mb-12 mt-8">J&J Music.</div>
-        <nav>
-          <ul className="flex gap-8 text-sm tracking-widest font-light mt-0">
+    <header className="navbar-header">
+      <div className="navbar-container">
+        {/* 로고 */}
+        <div className="navbar-logo">J&J Music.</div>
+        
+        {/* 데스크톱 네비게이션 */}
+        <nav className="navbar-desktop">
+          <ul className="navbar-list">
             {navs.map((nav) => (
-              <li key={nav.name} className="relative">
+              <li key={nav.name} className="navbar-item">
                 {nav.name === "CONTACT" ? (
                   <button
                     onClick={handleContactClick}
-                    className="hover:underline font-playfair font-light tracking-wider text-[13px] opacity-85 hover:opacity-100 transition-opacity cursor-pointer"
-                    style={{ color: "#212327" }}
+                    className="navbar-link"
                   >
                     {nav.name}
                   </button>
                 ) : (
                   <Link
                     href={nav.href}
-                    className="hover:underline font-playfair font-light tracking-wider text-[13px] opacity-85 hover:opacity-100 transition-opacity"
-                    style={{ color: "#212327" }}
+                    className="navbar-link"
+                    onClick={handleNavClick}
                   >
                     {nav.name}
                   </Link>
@@ -55,15 +65,54 @@ export default function NavBar() {
                   null
                 ) : (
                   pathname === nav.href && (
-                    <span className="block absolute left-1/2 -translate-x-1/2 bottom-[-6px] w-16 h-[0.5px] bg-black rounded opacity-45"></span>
+                    <span className="navbar-active-line"></span>
                   )
                 )}
               </li>
             ))}
           </ul>
         </nav>
+        
+        {/* 모바일 햄버거 버튼 */}
+        <button 
+          className="navbar-toggle"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+          <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+          <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+        </button>
+        
+        {/* 모바일 네비게이션 메뉴 */}
+        <nav className={`navbar-mobile ${isMenuOpen ? 'open' : ''}`}>
+          <ul className="navbar-mobile-list">
+            {navs.map((nav) => (
+              <li key={nav.name} className="navbar-mobile-item">
+                {nav.name === "CONTACT" ? (
+                  <button
+                    onClick={handleContactClick}
+                    className="navbar-mobile-link"
+                  >
+                    {nav.name}
+                  </button>
+                ) : (
+                  <Link
+                    href={nav.href}
+                    className="navbar-mobile-link"
+                    onClick={handleNavClick}
+                  >
+                    {nav.name}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-      <div className="h-px w-full max-w-[1120px] bg-gray-300 opacity-50 mx-auto mt-5"></div>
+      
+      {/* 구분선 */}
+      <div className="navbar-divider"></div>
     </header>
   );
 }
