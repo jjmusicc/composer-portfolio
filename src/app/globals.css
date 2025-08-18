@@ -258,17 +258,23 @@ body {
 
 .profile-year {
   font-size: clamp(10px, 2.5vw, 12px);
-  white-space: nowrap;
+  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profile-work {
   font-size: clamp(10px, 2.5vw, 12px);
-  white-space: nowrap;
+  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profile-role {
   font-size: clamp(10px, 2.5vw, 12px);
-  white-space: nowrap;
+  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* 애니메이션 */
