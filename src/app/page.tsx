@@ -1,6 +1,8 @@
+"use client";
 
 import Image from "next/image";
 import NavBar from "./components/NavBar";
+import { useEffect, useRef } from "react";
 
 const profile = [
   { year: "2020", work: "Sundance 영화제 초청작 <ScareCrow>", role: "Composer" },
@@ -28,6 +30,60 @@ const profile = [
 ];
 
 export default function Home() {
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    // 모바일에서만 애니메이션 적용
+    const isMobile = window.innerWidth < 768;
+    
+    if (!isMobile) {
+      // 데스크톱에서는 모든 카드를 바로 보이게 설정
+      cardRefs.current.forEach((card) => {
+        if (card) {
+          card.style.opacity = "1";
+          card.style.transform = "translateX(0)";
+        }
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            // 각 카드가 순차적으로 나타나도록 지연 시간 설정
+            setTimeout(() => {
+              if (entry.target) {
+                const target = entry.target as HTMLElement;
+                target.style.opacity = "1";
+                target.style.transform = "translateX(0)";
+              }
+            }, index * 200); // 각 카드마다 200ms 지연
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      }
+    );
+
+    // 각 카드에 observer 연결
+    cardRefs.current.forEach((card) => {
+      if (card) {
+        observer.observe(card);
+      }
+    });
+
+    return () => {
+      cardRefs.current.forEach((card) => {
+        if (card) {
+          observer.unobserve(card);
+        }
+      });
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-black font-sans">
       {/* 네비게이션 바 */}
@@ -42,7 +98,7 @@ export default function Home() {
             alt="작업실"
             width={555}
             height={436}
-            className="object-contain w-full max-w-[555px] h-auto"
+            className="object-contain w-full h-auto"
             style={{
               borderRadius: 0,
               boxShadow: 'none',
@@ -50,9 +106,9 @@ export default function Home() {
           />
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_555px] gap-0 lg:gap-0">
           {/* 왼쪽 열: ABOUT US와 Profile */}
-          <div className="max-w-4xl mx-auto lg:mx-0">
+          <div className="w-full">
             {/* ABOUT US 섹션 */}
             <div className="text-center lg:text-left mb-8">
               <div className="text-xs text-gray-400 mb-2">Aenean felis</div>
@@ -61,7 +117,7 @@ export default function Home() {
             </div>
             
             <div className="text-center lg:text-left mb-12">
-              <div className="leading-relaxed text-[13px] sm:text-[14px] font-sans text-gray-500 space-y-3 max-w-3xl mx-auto lg:mx-0">
+              <div className="leading-relaxed text-[13px] sm:text-[14px] font-sans text-gray-500 space-y-3">
                 <p>J&J Music에서는 애니메이션, 게임, 영화를 비롯한 다양한 영상에 음악을 디자인합니다.</p>
                 <p>어떤 옷을 입느냐에 따라 사람의 분위기가 달라지듯</p>
                 <p>똑같은 영상이라도 음악의 분위기, 속도, 악기에 따라 전혀 다른 느낌을 전달합니다.</p>
@@ -71,31 +127,33 @@ export default function Home() {
             </div>
             
             {/* Profile 섹션 */}
-            <div className="text-center lg:text-left">
+            <div className="text-left">
               <div className="mb-6 font-semibold text-[18px] sm:text-[20px]">&lt;Profile&gt;</div>
-              <div className="profile-container text-[11px] sm:text-[12px] max-w-4xl mx-auto lg:mx-0">
+              <div className="profile-container text-[11px] sm:text-[12px] px-8">
                 {profile.map((item, i) => (
-                  <div key={i} className="flex items-center justify-between py-1">
-                    <span className="profile-year w-16 text-gray-500 flex-shrink-0 text-left">{item.year}</span>
-                    <span className="profile-work flex-1 px-4 text-center">{item.work}</span>
-                    <span className="profile-role w-32 text-right text-gray-400 flex-shrink-0">{item.role}</span>
+                  <div key={i} className="grid grid-cols-[4rem_1fr_8rem] items-center gap-x-4 py-1">
+                    <span className="profile-year text-gray-500 text-left">{item.year}</span>
+                    <span className="profile-work min-w-0 truncate text-left">{item.work}</span>
+                    <span className="profile-role text-left text-gray-400">{item.role}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
           
-          {/* 데스크톱에서만 스튜디오 사진 표시 */}
-          <div className="hidden lg:flex justify-center lg:justify-start items-start">
+          {/* 오른쪽 열: 스튜디오 사진 (데스크톱에서만) */}
+          <div className="hidden lg:flex justify-center lg:justify-start items-start lg:ml-16">
             <Image
               src="/studio.jpg"
               alt="작업실"
               width={555}
               height={436}
-              className="object-contain w-full max-w-[555px] h-auto"
+              className="object-contain h-auto flex-shrink-0"
               style={{
                 borderRadius: 0,
                 boxShadow: 'none',
+                width: '555px',
+                height: '436.19px',
               }}
             />
           </div>
@@ -107,7 +165,7 @@ export default function Home() {
         </div>
         
         {/* 4단계 카드 그룹 */}
-        <div className="card-group min-h-[320px] max-w-6xl mx-auto mt-0 mb-0">
+        <div className="card-group min-h-[320px] mt-0 mb-0">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             {[
               {
@@ -149,7 +207,10 @@ export default function Home() {
             ].map((step, index) => (
               <div
                 key={step.num}
-                className={`card-animation card-animation-${index + 1} flex flex-col items-center`}
+                ref={(el) => {
+                  cardRefs.current[index] = el;
+                }}
+                className={`card-animation card-animation-${index + 1} flex flex-col items-center transition-all duration-700 ease-out`}
                 style={{
                   opacity: 0,
                   transform: 'translateX(-50px)',
