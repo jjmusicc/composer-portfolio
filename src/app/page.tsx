@@ -35,6 +35,21 @@ export default function Home() {
       
       {/* 본문 - 원래 2열 레이아웃 */}
       <main className="max-w-6xl mx-auto px-4 py-8 md:py-16">
+        {/* 모바일에서 스튜디오 사진을 상단에 배치 */}
+        <div className="lg:hidden flex justify-center mb-8">
+          <Image
+            src="/studio.jpg"
+            alt="작업실"
+            width={555}
+            height={436}
+            className="object-contain w-full max-w-[555px] h-auto"
+            style={{
+              borderRadius: 0,
+              boxShadow: 'none',
+            }}
+          />
+        </div>
+        
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-16">
           {/* 왼쪽 열: ABOUT US와 Profile */}
           <div className="max-w-4xl mx-auto lg:mx-0">
@@ -70,8 +85,8 @@ export default function Home() {
             </div>
           </div>
           
-          {/* 오른쪽 열: 스튜디오 사진 */}
-          <div className="flex justify-center lg:justify-start items-start">
+          {/* 데스크톱에서만 스튜디오 사진 표시 */}
+          <div className="hidden lg:flex justify-center lg:justify-start items-start">
             <Image
               src="/studio.jpg"
               alt="작업실"
