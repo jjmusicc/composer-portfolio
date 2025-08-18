@@ -235,6 +235,15 @@ body {
   }
 }
 
+/* 585px 이하에서 Profile 작품명 말줄임표 처리 */
+@media (max-width: 585px) {
+  .profile-work {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
 /* 애니메이션 */
 @keyframes slideInFromLeft {
   0% {
