@@ -337,78 +337,77 @@ export default function ProjectsPage() {
       {/* 네비게이션 바 추가 */}
       <NavBar />
       
-      <div className="px-4 py-12">
+      <div className="px-4 py-8 md:py-12">
         {/* 상단 타이틀/서브타이틀 */}
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start mb-8">
-          <div className="text-3xl md:text-4xl font-serif font-light mb-4 md:mb-0">Filmography & Me.</div>
-          <div className="text-sm text-gray-500 mt-2 md:mt-0 md:text-right">Music Director / Producer / Composer</div>
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start mb-6 md:mb-8">
+          <div className="text-2xl sm:text-3xl md:text-4xl font-serif font-light mb-4 md:mb-0">Filmography & Me.</div>
+          <div className="text-xs sm:text-sm text-gray-500 mt-2 md:mt-0 md:text-right">Music Director / Producer / Composer</div>
         </div>
         {/* 카테고리 네비 */}
-        <nav className="flex gap-12 justify-center mb-2">
+        <nav className="flex gap-6 sm:gap-8 md:gap-12 justify-center mb-2 overflow-x-auto pb-2">
           {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setSelected(cat)}
               className={
-                "relative pb-2 text-lg font-light " +
+                "relative pb-2 text-base sm:text-lg font-light whitespace-nowrap " +
                 (selected === cat ? "font-semibold" : "")
               }
               style={{ letterSpacing: "0.08em" }}
             >
               {cat}
               {selected === cat && (
-                <span className="block absolute left-1/2 -translate-x-1/2 bottom-0 w-12 h-[2px] bg-gray-300" style={{ opacity: 0.3, borderRadius: '4px' }}></span>
+                <span className="block absolute left-1/2 -translate-x-1/2 bottom-0 w-8 sm:w-12 h-[2px] bg-gray-300" style={{ opacity: 0.3, borderRadius: '4px' }}></span>
               )}
             </button>
           ))}
         </nav>
         {/* 구분선 */}
-        <div className="h-px w-full max-w-[900px] bg-gray-200 opacity-60 mx-auto mb-12 mt-2"></div>
+        <div className="h-px w-full max-w-[900px] bg-gray-200 opacity-60 mx-auto mb-8 md:mb-12 mt-2"></div>
         {/* 프로젝트 리스트 */}
-        <div className="max-w-6xl mx-auto flex flex-col gap-16">
+        <div className="max-w-6xl mx-auto flex flex-col gap-8 md:gap-16 px-4 md:px-0">
           {/* 2단 구조: 단편영화 <제비>, VR 영화 <ScareCrow> */}
           {filtered.filter(p => p.title.includes("제비") || p.title.includes("ScareCrow")).map((p, i) => (
-            <div key={i} className="flex flex-row gap-8 items-start">
-              <div className="w-[555px] flex-shrink-0 min-w-0">
-                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '555px', height: '311.91px' }}>
+            <div key={i} className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-start">
+              <div className="w-full lg:w-[555px] flex-shrink-0 min-w-0">
+                <div className="bg-gray-100 rounded overflow-hidden w-full lg:w-[555px] h-[200px] sm:h-[250px] lg:h-[311.91px]">
                   <iframe
-                    width={555}
-                    height={311.91}
+                    width="100%"
+                    height="100%"
                     src={p.youtube}
                     title={p.title}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="w-full h-full"
-                    style={{ width: '555px', height: '311.91px' }}
                   ></iframe>
                 </div>
               </div>
-              <div className="flex-1 min-w-0 font-sans">
-                <div className="mb-4" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '23px', lineHeight: '1.3' }}>{p.title}</div>
+              <div className="flex-1 min-w-0 font-sans mt-4 lg:mt-0">
+                <div className="mb-4" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: 'clamp(18px, 4vw, 23px)', lineHeight: '1.3' }}>{p.title}</div>
                 {p.desc}
               </div>
             </div>
           ))}
+          
           {/* 2개 한 줄: My own~ & 마법천자문 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
             {filtered.filter(p => p.title.includes("My own") || p.title.includes("마법천자문")).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
-                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '555px', height: '311.91px' }}>
+                <div className="bg-gray-100 rounded overflow-hidden w-full h-[200px] sm:h-[250px] lg:h-[311.91px]">
                   <iframe
-                    width={555}
-                    height={311.91}
+                    width="100%"
+                    height="100%"
                     src={p.youtube}
                     title={p.title}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="w-full h-full"
-                    style={{ width: '555px', height: '311.91px' }}
                   ></iframe>
                 </div>
-                <div className="font-sans text-gray-700 mt-4">
-                  {p.title && <div className="font-semibold mb-3" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>}
+                <div className="font-sans text-gray-700 mt-4 w-full">
+                  {p.title && <div className="font-semibold mb-3" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: 'clamp(12px, 3vw, 13px)', lineHeight: '1.3' }}>{p.title}</div>}
                   {p.desc}
                 </div>
               </div>
@@ -416,23 +415,22 @@ export default function ProjectsPage() {
           </div>
           
           {/* 사운드클라우드 음악 프로젝트들 - 첫 번째 줄 (2개: 초대, 아버지와 아들) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
             {filtered.filter(p => p.soundcloud && (p.title.includes("초대") || p.title.includes("아버지와 아들"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
-                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '555px', height: '311.91px' }}>
+                <div className="bg-gray-100 rounded overflow-hidden w-full h-[200px] sm:h-[250px] lg:h-[311.91px]">
                   <iframe
-                    width={555}
-                    height={311.91}
+                    width="100%"
+                    height="100%"
                     src={p.soundcloud}
                     title={p.title}
                     frameBorder="0"
                     allow="autoplay"
                     className="w-full h-full"
-                    style={{ width: '555px', height: '311.91px' }}
                   ></iframe>
                 </div>
                 <div className="font-sans text-gray-700 mt-4 w-full">
-                  <div className="font-semibold mb-3" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                  <div className="font-semibold mb-3" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: 'clamp(12px, 3vw, 13px)', lineHeight: '1.3' }}>{p.title}</div>
                   {p.desc}
                 </div>
               </div>
@@ -440,13 +438,13 @@ export default function ProjectsPage() {
           </div>
           
           {/* 사운드클라우드 프로젝트들 - 두 번째 줄 (3개: 순이, 커피, 잔잔한 웃음) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
             {filtered.filter(p => p.soundcloud && (p.title.includes("조심스러운 성공") || p.title.includes("커피를 들고 집으로") || p.title.includes("잔잔한 웃음"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
-                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                <div className="bg-gray-100 rounded overflow-hidden w-full h-[140px] sm:h-[166px]">
                   <iframe
                     width="100%"
-                    height="166"
+                    height="100%"
                     src={p.soundcloud}
                     title={p.title}
                     frameBorder="0"
@@ -454,8 +452,8 @@ export default function ProjectsPage() {
                     className="w-full h-full"
                   ></iframe>
                 </div>
-                <div className="font-sans text-gray-700 mt-4 w-full">
-                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                <div className="font-sans text-gray-700 mt-3 lg:mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: 'clamp(11px, 2.5vw, 13px)', lineHeight: '1.3' }}>{p.title}</div>
                   {p.desc}
                 </div>
               </div>
@@ -463,13 +461,13 @@ export default function ProjectsPage() {
           </div>
           
           {/* 사운드클라우드 프로젝트들 - 세 번째 줄 (3개: 정이로운 이들이여, 어항과 물고기, 희망의 바다) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
             {filtered.filter(p => p.soundcloud && (p.title.includes("정이로운 이들이여") || p.title.includes("어항과 물고기") || p.title.includes("희망의 바다"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
-                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                <div className="bg-gray-100 rounded overflow-hidden w-full h-[140px] sm:h-[166px]">
                   <iframe
                     width="100%"
-                    height="166"
+                    height="100%"
                     src={p.soundcloud}
                     title={p.title}
                     frameBorder="0"
@@ -477,8 +475,8 @@ export default function ProjectsPage() {
                     className="w-full h-full"
                   ></iframe>
                 </div>
-                <div className="font-sans text-gray-700 mt-4 w-full">
-                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                <div className="font-sans text-gray-700 mt-3 lg:mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: 'clamp(11px, 2.5vw, 13px)', lineHeight: '1.3' }}>{p.title}</div>
                   {p.desc}
                 </div>
               </div>
@@ -486,13 +484,13 @@ export default function ProjectsPage() {
           </div>
           
           {/* YouTube 프로젝트들 - 세 번째 줄 (JIMICHOO, Club Scene, 만남 Scene, 코믹 Scene) */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {filtered.filter(p => p.youtube && (p.title.includes("JIMICHOO") || p.title.includes("Club Scene") || p.title.includes("만남 Scene") || p.title.includes("코믹 Scene"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
-                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                <div className="bg-gray-100 rounded overflow-hidden w-full h-[140px] sm:h-[166px]">
                   <iframe
                     width="100%"
-                    height="166"
+                    height="100%"
                     src={p.youtube}
                     title={p.title}
                     frameBorder="0"
@@ -501,8 +499,8 @@ export default function ProjectsPage() {
                     className="w-full h-full"
                   ></iframe>
                 </div>
-                <div className="font-sans text-gray-700 mt-4 w-full">
-                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                <div className="font-sans text-gray-700 mt-3 lg:mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: 'clamp(11px, 2.5vw, 13px)', lineHeight: '1.3' }}>{p.title}</div>
                   {p.desc}
                 </div>
               </div>
@@ -510,13 +508,13 @@ export default function ProjectsPage() {
           </div>
           
           {/* 새로운 사운드클라우드 프로젝트들 - 4개 (Time With Mom, Mom's coffee machine, 그녀의 뒷모습, Coffee Practice) */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {filtered.filter(p => p.soundcloud && (p.title.includes("Time With Mom") || p.title.includes("Mom's coffee machine") || p.title.includes("그녀의 뒷모습") || p.title.includes("Coffee Practice"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
-                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                <div className="bg-gray-100 rounded overflow-hidden w-full h-[140px] sm:h-[166px]">
                   <iframe
                     width="100%"
-                    height="166"
+                    height="100%"
                     src={p.soundcloud}
                     title={p.title}
                     frameBorder="0"
@@ -524,8 +522,8 @@ export default function ProjectsPage() {
                     className="w-full h-full"
                   ></iframe>
                 </div>
-                <div className="font-sans text-gray-700 mt-4 w-full">
-                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                <div className="font-sans text-gray-700 mt-3 lg:mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: 'clamp(11px, 2.5vw, 13px)', lineHeight: '1.3' }}>{p.title}</div>
                   {p.desc}
                 </div>
               </div>
@@ -533,13 +531,13 @@ export default function ProjectsPage() {
           </div>
           
           {/* 새로운 사운드클라우드 프로젝트들 - 3개 (꿈을 좇아서, 환생, 개판 5분 전) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
             {filtered.filter(p => p.soundcloud && (p.title.includes("꿈을 좇아서") || p.title.includes("환생") || p.title.includes("개판 5분 전"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
-                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                <div className="bg-gray-100 rounded overflow-hidden w-full h-[140px] sm:h-[166px]">
                   <iframe
                     width="100%"
-                    height="166"
+                    height="100%"
                     src={p.soundcloud}
                     title={p.title}
                     frameBorder="0"
@@ -547,8 +545,8 @@ export default function ProjectsPage() {
                     className="w-full h-full"
                   ></iframe>
                 </div>
-                <div className="font-sans text-gray-700 mt-4 w-full">
-                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                <div className="font-sans text-gray-700 mt-3 lg:mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: 'clamp(11px, 2.5vw, 13px)', lineHeight: '1.3' }}>{p.title}</div>
                   {p.desc}
                 </div>
               </div>
@@ -556,13 +554,13 @@ export default function ProjectsPage() {
           </div>
           
           {/* 새로운 유튜브 프로젝트들 - 3개 (로봇키튼 재난 대피, On Feelings, Fantasy Royal VR) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
             {filtered.filter(p => p.youtube && (p.title.includes("재난 대피 장면") || p.title.includes("On Feelings") || p.title.includes("Fantasy Royal VR"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
-                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                <div className="bg-gray-100 rounded overflow-hidden w-full h-[140px] sm:h-[166px]">
                   <iframe
                     width="100%"
-                    height="166"
+                    height="100%"
                     src={p.youtube}
                     title={p.title}
                     frameBorder="0"
@@ -571,10 +569,10 @@ export default function ProjectsPage() {
                     className="w-full h-full"
                   ></iframe>
                 </div>
-                <div className="font-sans text-gray-700 mt-4 w-full">
+                <div className="font-sans text-gray-700 mt-3 lg:mt-4 w-full">
                   <div className="font-semibold mb-2" style={{ 
                     fontFamily: 'Noto Sans KR, sans-serif', 
-                    fontSize: p.title.includes("경기학생안전체험관") ? '11px' : '13px', 
+                    fontSize: p.title.includes("경기학생안전체험관") ? 'clamp(10px, 2.5vw, 11px)' : 'clamp(11px, 2.5vw, 13px)', 
                     lineHeight: '1.3',
                     color: p.title.includes("경기학생안전체험관") ? '#888888' : 'inherit'
                   }}>{p.title}</div>
@@ -585,13 +583,13 @@ export default function ProjectsPage() {
           </div>
           
           {/* 새로운 유튜브 프로젝트들 - 4개 (로봇키튼 시리즈) */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {filtered.filter(p => p.youtube && (p.title.includes("평화로운 교실") || p.title.includes("화재 대피 직전") || p.title.includes("발화 장면") || p.title.includes("재난 대피 후 재회"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
-                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                <div className="bg-gray-100 rounded overflow-hidden w-full h-[140px] sm:h-[166px]">
                   <iframe
                     width="100%"
-                    height="166"
+                    height="100%"
                     src={p.youtube}
                     title={p.title}
                     frameBorder="0"
@@ -600,12 +598,12 @@ export default function ProjectsPage() {
                     className="w-full h-full"
                   ></iframe>
                 </div>
-                <div className="font-sans text-gray-700 mt-4 w-full">
+                <div className="font-sans text-gray-700 mt-3 lg:mt-4 w-full">
                   <div className="font-semibold mb-2" style={{ 
                     fontFamily: 'Noto Sans KR, sans-serif', 
-                    fontSize: '11px', 
+                    fontSize: p.title.includes("경기학생안전체험관") ? 'clamp(10px, 2.5vw, 11px)' : 'clamp(11px, 2.5vw, 13px)', 
                     lineHeight: '1.3',
-                    color: '#888888'
+                    color: p.title.includes("경기학생안전체험관") ? '#888888' : 'inherit'
                   }}>{p.title}</div>
                   {p.desc}
                 </div>
