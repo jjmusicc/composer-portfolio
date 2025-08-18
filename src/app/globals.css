@@ -240,7 +240,6 @@ body {
   .profile-work {
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    white-space: nowrap !important;
     max-width: 200px !important;
     font-size: clamp(8px, 2vw, 12px) !important;
   }
