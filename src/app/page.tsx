@@ -62,7 +62,7 @@ export default function Home() {
                 {profile.map((item, i) => (
                   <div key={i} className="flex items-center justify-between py-1">
                     <span className="w-16 text-gray-500 flex-shrink-0 text-left">{item.year}</span>
-                    <span className="flex-1 px-4 text-center">{item.work}</span>
+                    <span className="flex-1 px-4 text-center whitespace-nowrap">{item.work}</span>
                     <span className="w-32 text-right text-gray-400 flex-shrink-0">{item.role}</span>
                   </div>
                 ))}
