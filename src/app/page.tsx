@@ -35,63 +35,51 @@ export default function Home() {
       
       {/* 본문 */}
       <main className="max-w-6xl mx-auto px-4 py-8 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-12 items-start mb-16 lg:mb-24">
-          {/* 왼쪽: 소개/프로필 */}
-          <div className="min-w-0 lg:min-w-[340px] lg:max-w-[480px] flex flex-col -mt-6">
-            <div className="text-xs text-gray-400 mb-2" style={{ paddingTop: 0 }}>Aenean felis</div>
-            <div className="font-libre-baskerville text-2xl sm:text-3xl font-bold mb-2 mt-10">ABOUT US</div>
-            <div
-              style={{
-                width: '51px',
-                borderBottom: '1px solid rgba(0,0,0,0.5)',
-                opacity: 0.5,
-                paddingTop: '30px',
-                paddingBottom: '30px',
-                marginTop: '0px',
-                marginBottom: '0px',
-                transform: 'translateY(-20px)',
-              }}
-            ></div>
-            <div
-              className="mb-0 leading-loose text-[13px] sm:text-[14px] font-sans text-gray-500 space-y-2 mx-auto text-left w-fit mt-0 mb-12"
-              style={{ paddingTop: '30px', marginBottom: '42px' }}
-            >
-              <p className="whitespace-nowrap">J&J Music에서는 애니메이션, 게임, 영화를 비롯한 다양한 영상에 음악을 디자인합니다.</p>
+        {/* 스튜디오 사진을 네비게이터 바로 아래에 배치 */}
+        <div className="flex justify-center mb-12 md:mb-16">
+          <Image
+            src="/studio.jpg"
+            alt="작업실"
+            width={555}
+            height={436}
+            className="object-contain w-full max-w-[555px] h-auto"
+            style={{
+              borderRadius: 0,
+              boxShadow: 'none',
+            }}
+          />
+        </div>
+        
+        {/* ABOUT US와 Profile 섹션을 아래쪽에 배치 */}
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <div className="text-xs text-gray-400 mb-2">Aenean felis</div>
+            <div className="font-libre-baskerville text-2xl sm:text-3xl font-bold mb-4">ABOUT US</div>
+            <div className="w-16 h-px bg-gray-300 mx-auto opacity-50"></div>
+          </div>
+          
+          <div className="text-center mb-12">
+            <div className="leading-relaxed text-[13px] sm:text-[14px] font-sans text-gray-500 space-y-3 max-w-3xl mx-auto">
+              <p>J&J Music에서는 애니메이션, 게임, 영화를 비롯한 다양한 영상에 음악을 디자인합니다.</p>
               <p>어떤 옷을 입느냐에 따라 사람의 분위기가 달라지듯</p>
               <p>똑같은 영상이라도 음악의 분위기, 속도, 악기에 따라 전혀 다른 느낌을 전달합니다.</p>
               <p>디테일한 영상 분석과 커뮤니케이션을 통해</p>
               <p>더 높은 수준의 영상으로 끌어올립니다.</p>
             </div>
-            <div className="mt-5">
-              <div className="mb-2 font-semibold text-[18px] sm:text-[20px]">&lt;Profile&gt;</div>
-              <div className="text-[11px] sm:text-[12px]">
-                {profile.map((item, i) => (
-                  <div key={i} className="relative mb-1 flex items-center whitespace-nowrap" style={{height: '1.7em'}}>
-                    <span className="w-16 text-gray-500 flex-shrink-0">{item.year}</span>
-                    <span className="min-w-0 truncate pr-2" style={{display:'inline-block', maxWidth:'calc(100% - 180px)'}}>{item.work}</span>
-                    <span className="absolute right-[-60px] w-40 text-right text-gray-400 flex-shrink-0">{item.role}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
           
-          {/* 오른쪽: 사진 */}
-          <div className="flex justify-center min-w-0 lg:min-w-[320px] lg:max-w-[900px] w-full mx-auto lg:pl-8 lg:pr-0">
-            <Image
-              src="/studio.jpg"
-              alt="작업실"
-              width={555}
-              height={436}
-              className="object-contain w-full max-w-[555px] h-auto"
-              style={{
-                borderRadius: 0,
-                boxShadow: 'none',
-                position: 'relative',
-                left: '0',
-                top: '-2rem',
-              }}
-            />
+          {/* Profile 섹션 */}
+          <div className="text-center">
+            <div className="mb-6 font-semibold text-[18px] sm:text-[20px]">&lt;Profile&gt;</div>
+            <div className="text-[11px] sm:text-[12px] max-w-4xl mx-auto">
+              {profile.map((item, i) => (
+                <div key={i} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0">
+                  <span className="w-16 text-gray-500 flex-shrink-0 text-left">{item.year}</span>
+                  <span className="flex-1 px-4 text-center">{item.work}</span>
+                  <span className="w-32 text-gray-400 flex-shrink-0 text-right">{item.role}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         
