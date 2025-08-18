@@ -76,6 +76,36 @@ const projects = [
   },
   {
     category: "음악",
+    title: "아버지와 아들 #느린 #감정적인",
+    soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/ygyhyv3qm9oh&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+    desc: (
+      <>
+        <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
+      </>
+    ),
+  },
+  {
+    category: "음악",
+    title: "커피를 들고 집으로 #흥미진진한 #모험",
+    soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/yclp0vsjwy4w&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+    desc: (
+      <>
+        <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
+      </>
+    ),
+  },
+  {
+    category: "음악",
+    title: "잔잔한 웃음 #밝은 #감동적인",
+    soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/9ksoxycpagfe&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+    desc: (
+      <>
+        <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
+      </>
+    ),
+  },
+  {
+    category: "음악",
     title: "<순이> 조심스러운 성공 #신비로운 #살금살금",
     soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/iiwr4ytfd6iq&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     desc: (
@@ -260,6 +290,36 @@ const projects = [
     category: "애니메이션",
     title: "경기학생안전체험관 4D 애니메이션 <로봇키튼> 재난 대피 후 재회 장면 삽입곡",
     youtube: "https://www.youtube.com/embed/YNgiG9qZhwQ",
+    desc: (
+      <>
+        <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
+      </>
+    ),
+  },
+  {
+    category: "음악",
+    title: "[정이로운 이들이여] Main OST #스릴러 #음산한",
+    soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/oyiezt2wvgbv&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+    desc: (
+      <>
+        <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
+      </>
+    ),
+  },
+  {
+    category: "음악",
+    title: "[아트필름] 어항과 물고기 #신비로운 #긴장감",
+    soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/wrbshqphekjy&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+    desc: (
+      <>
+        <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
+      </>
+    ),
+  },
+  {
+    category: "음악",
+    title: "희망의 바다 #그리움 #희망 #엔딩송",
+    soundcloud: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/j-j-music-546543640/rzuuic2tmllc&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     desc: (
       <>
         <div className="mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}></div>
