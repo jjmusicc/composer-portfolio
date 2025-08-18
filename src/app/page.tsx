@@ -89,7 +89,7 @@ export default function Home() {
                 boxShadow: 'none',
                 position: 'relative',
                 left: '0',
-                top: '0',
+                top: '-2rem',
               }}
             />
           </div>
