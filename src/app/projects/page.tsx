@@ -380,7 +380,7 @@ export default function ProjectsPage() {
           
           {/* 사운드클라우드 프로젝트들 - 두 번째 줄 (3개: 커피, 잔잔한 웃음, 정이로운 이들이여) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {filtered.filter(p => p.soundcloud && (p.title.includes("커피") || p.title.includes("잔잔한 웃음") || p.title.includes("정이로운 이들이여"))).map((p, i) => (
+            {filtered.filter(p => p.soundcloud && (p.title.includes("커피를 들고 집으로") || p.title.includes("잔잔한 웃음") || p.title.includes("정이로운 이들이여"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
                 <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
                   <iframe
