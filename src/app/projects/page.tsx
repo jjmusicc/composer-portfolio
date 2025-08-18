@@ -355,33 +355,9 @@ export default function ProjectsPage() {
             ))}
           </div>
           
-          {/* 사운드클라우드 음악 프로젝트들 - 첫 번째 줄 (2개) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {filtered.filter(p => p.soundcloud && (p.title.includes("초대") || p.title.includes("아버지와 아들"))).map((p, i) => (
-              <div key={i} className="flex flex-col items-start">
-                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '555px', height: '311.91px' }}>
-                  <iframe
-                    width={555}
-                    height={311.91}
-                    src={p.soundcloud}
-                    title={p.title}
-                    frameBorder="0"
-                    allow="autoplay"
-                    className="w-full h-full"
-                    style={{ width: '555px', height: '311.91px' }}
-                  ></iframe>
-                </div>
-                <div className="font-sans text-gray-700 mt-4 w-full">
-                  <div className="font-semibold mb-3" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
-                  {p.desc}
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          {/* 사운드클라우드 프로젝트들 - 첫 번째 줄 (3개: 조심스러운 성공, 커피, 잔잔한 웃음) */}
+          {/* 사운드클라우드 음악 프로젝트들 - 첫 번째 줄 (3개: 초대, 아버지와 아들, 순이) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {filtered.filter(p => p.soundcloud && (p.title.includes("조심스러운 성공") || p.title.includes("커피") || p.title.includes("잔잔한 웃음"))).map((p, i) => (
+            {filtered.filter(p => p.soundcloud && (p.title.includes("초대") || p.title.includes("아버지와 아들") || p.title.includes("조심스러운 성공"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
                 <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
                   <iframe
@@ -402,9 +378,32 @@ export default function ProjectsPage() {
             ))}
           </div>
           
-          {/* 사운드클라우드 프로젝트들 - 두 번째 줄 (3개: 정이로운 이들이여, 어항과 물고기, 희망의 바다) */}
+          {/* 사운드클라우드 프로젝트들 - 두 번째 줄 (3개: 커피, 잔잔한 웃음, 정이로운 이들이여) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {filtered.filter(p => p.soundcloud && (p.title.includes("정이로운 이들이여") || p.title.includes("어항과 물고기") || p.title.includes("희망의 바다"))).map((p, i) => (
+            {filtered.filter(p => p.soundcloud && (p.title.includes("커피") || p.title.includes("잔잔한 웃음") || p.title.includes("정이로운 이들이여"))).map((p, i) => (
+              <div key={i} className="flex flex-col items-start">
+                <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
+                  <iframe
+                    width="100%"
+                    height="166"
+                    src={p.soundcloud}
+                    title={p.title}
+                    frameBorder="0"
+                    allow="autoplay"
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+                <div className="font-sans text-gray-700 mt-4 w-full">
+                  <div className="font-semibold mb-2" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px', lineHeight: '1.3' }}>{p.title}</div>
+                  {p.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* 사운드클라우드 프로젝트들 - 세 번째 줄 (3개: 어항과 물고기, 희망의 바다, Time With Mom) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {filtered.filter(p => p.soundcloud && (p.title.includes("어항과 물고기") || p.title.includes("희망의 바다") || p.title.includes("Time With Mom"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
                 <div className="bg-gray-100 rounded overflow-hidden" style={{ width: '100%', height: '166px' }}>
                   <iframe
