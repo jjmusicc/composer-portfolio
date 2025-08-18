@@ -29,6 +29,28 @@ body {
   font-family: var(--font-libre-baskerville), serif !important;
 }
 
+/* 스튜디오 이미지와 콘텐츠 순서 강제 고정 */
+.studio-image-container {
+  order: 1 !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.content-section {
+  order: 2 !important;
+}
+
+/* 모바일에서도 순서 유지 */
+@media (max-width: 768px) {
+  .studio-image-container {
+    order: 1 !important;
+  }
+  
+  .content-section {
+    order: 2 !important;
+  }
+}
+
 @keyframes slideInFromLeft {
   0% {
     opacity: 0;

@@ -35,8 +35,8 @@ export default function Home() {
       
       {/* 본문 */}
       <main className="max-w-6xl mx-auto px-4 py-8 md:py-16">
-        {/* 스튜디오 사진을 NavBar 바로 아래에 배치 */}
-        <div className="flex justify-center mb-12 md:mb-16">
+        {/* 스튜디오 사진을 NavBar 바로 아래에 배치 - 모바일에서도 고정 */}
+        <div className="studio-image-container flex justify-center mb-12 md:mb-16" style={{ order: 1 }}>
           <Image
             src="/studio.jpg"
             alt="작업실"
@@ -51,7 +51,7 @@ export default function Home() {
         </div>
         
         {/* ABOUT US와 Profile 섹션을 스튜디오 사진 아래에 배치 */}
-        <div className="max-w-4xl mx-auto mb-12 md:mb-16">
+        <div className="content-section max-w-4xl mx-auto mb-12 md:mb-16" style={{ order: 2 }}>
           <div className="text-center mb-8">
             <div className="text-xs text-gray-400 mb-2">Aenean felis</div>
             <div className="font-libre-baskerville text-2xl sm:text-3xl font-bold mb-4">ABOUT US</div>
