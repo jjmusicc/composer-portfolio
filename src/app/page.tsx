@@ -33,123 +33,129 @@ export default function Home() {
       {/* 네비게이션 바 추가 */}
       <NavBar />
       
-      {/* 본문 */}
-      <main className="max-w-6xl mx-auto px-4 py-8 md:py-16">
-        {/* 스튜디오 사진을 NavBar 바로 아래에 배치 - 모바일에서도 고정 */}
-        <div className="studio-image-container flex justify-center mb-12 md:mb-16" style={{ order: 1 }}>
-          <Image
-            src="/studio.jpg"
-            alt="작업실"
-            width={555}
-            height={436}
-            className="object-contain w-full max-w-[555px] h-auto"
-            style={{
-              borderRadius: 0,
-              boxShadow: 'none',
-            }}
-          />
-        </div>
-        
-        {/* ABOUT US와 Profile 섹션을 스튜디오 사진 아래에 배치 */}
-        <div className="content-section max-w-4xl mx-auto mb-12 md:mb-16" style={{ order: 2 }}>
-          <div className="text-center mb-8">
-            <div className="text-xs text-gray-400 mb-2">Aenean felis</div>
-            <div className="font-libre-baskerville text-2xl sm:text-3xl font-bold mb-4">ABOUT US</div>
-            <div className="w-16 h-px bg-gray-300 mx-auto opacity-50"></div>
+      {/* 스튜디오 사진을 NavBar 바로 아래에 배치 - 완전히 독립적인 섹션 */}
+      <div className="studio-wrapper w-full bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-8 md:py-16">
+          <div className="flex justify-center">
+            <Image
+              src="/studio.jpg"
+              alt="작업실"
+              width={555}
+              height={436}
+              className="object-contain w-full max-w-[555px] h-auto"
+              style={{
+                borderRadius: 0,
+                boxShadow: 'none',
+              }}
+            />
           </div>
-          
-          <div className="text-center mb-12">
-            <div className="leading-relaxed text-[13px] sm:text-[14px] font-sans text-gray-500 space-y-3 max-w-3xl mx-auto">
-              <p>J&J Music에서는 애니메이션, 게임, 영화를 비롯한 다양한 영상에 음악을 디자인합니다.</p>
-              <p>어떤 옷을 입느냐에 따라 사람의 분위기가 달라지듯</p>
-              <p>똑같은 영상이라도 음악의 분위기, 속도, 악기에 따라 전혀 다른 느낌을 전달합니다.</p>
-              <p>디테일한 영상 분석과 커뮤니케이션을 통해</p>
-              <p>더 높은 수준의 영상으로 끌어올립니다.</p>
+        </div>
+      </div>
+      
+      {/* ABOUT US와 Profile 섹션 - 별도의 main 컨테이너 */}
+      <div className="content-wrapper w-full bg-white">
+        <main className="max-w-6xl mx-auto px-4 py-8 md:py-16">
+          {/* ABOUT US와 Profile 섹션 */}
+          <div className="max-w-4xl mx-auto mb-12 md:mb-16">
+            <div className="text-center mb-8">
+              <div className="text-xs text-gray-400 mb-2">Aenean felis</div>
+              <div className="font-libre-baskerville text-2xl sm:text-3xl font-bold mb-4">ABOUT US</div>
+              <div className="w-16 h-px bg-gray-300 mx-auto opacity-50"></div>
             </div>
-          </div>
-          
-          {/* Profile 섹션 */}
-          <div className="text-center">
-            <div className="mb-6 font-semibold text-[18px] sm:text-[20px]">&lt;Profile&gt;</div>
-            <div className="text-[11px] sm:text-[12px] max-w-4xl mx-auto">
-              {profile.map((item, i) => (
-                <div key={i} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0">
-                  <span className="w-16 text-gray-500 flex-shrink-0 text-left">{item.year}</span>
-                  <span className="flex-1 px-4 text-center">{item.work}</span>
-                  <span className="w-32 text-gray-400 flex-shrink-0 text-right">{item.role}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        
-        {/* 구분선 */}
-        <div className="flex justify-center my-16">
-          <div className="w-24 h-[1px] bg-gray-300 opacity-60"></div>
-        </div>
-        
-        {/* 4단계 카드 그룹을 grid div 바로 아래, 본문 전체 아래에 독립적으로 위치 */}
-        <div className="card-group min-h-[320px] max-w-6xl mx-auto mt-0 mb-0">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            {[
-              {
-                num: "01",
-                title: "COMMUNICATE",
-                desc: [
-                  "클라이언트의 의도에 따라",
-                  "다양한 방향성을 제시하여",
-                  "음악의 분위기와 배치를 구상 및 설명합니다.",
-                ],
-              },
-              {
-                num: "02",
-                title: "DESIGN",
-                desc: [
-                  "충분한 소통을 통해",
-                  "조율 된 내용을 바탕으로",
-                  "본격적인 제작을 진행합니다.",
-                ],
-              },
-              {
-                num: "03",
-                title: "DEVELOP",
-                desc: [
-                  "완성된 음악을 전달하고,",
-                  "다양한 변수에 따른",
-                  "수정 및 보완 작업을 진행합니다.",
-                ],
-              },
-              {
-                num: "04",
-                title: "COMPLETE",
-                desc: [
-                  "최종으로 마무리 된 음악을 영상에 입혀",
-                  "클라이언트의 최종 점검을 받고",
-                  "작업을 완료합니다.",
-                ],
-              },
-            ].map((step, index) => (
-              <div
-                key={step.num}
-                className={`card-animation card-animation-${index + 1} flex flex-col items-center`}
-                style={{
-                  opacity: 0,
-                  transform: 'translateX(-50px)',
-                }}
-              >
-                <div className="text-6xl text-gray-500 font-light mb-2">{step.num}</div>
-                <div className="tracking-[0.25em] text-xs font-semibold mb-4 text-gray-700">{step.title}</div>
-                <div className="w-8 h-[2px] bg-black mb-4" style={{ opacity: 0.5 }} />
-                <div className="text-[15px] text-gray-700 leading-relaxed">
-                  {step.desc.map((line, idx) => (
-                    <div key={idx}>{line}</div>
-                  ))}
-                </div>
+            
+            <div className="text-center mb-12">
+              <div className="leading-relaxed text-[13px] sm:text-[14px] font-sans text-gray-500 space-y-3 max-w-3xl mx-auto">
+                <p>J&J Music에서는 애니메이션, 게임, 영화를 비롯한 다양한 영상에 음악을 디자인합니다.</p>
+                <p>어떤 옷을 입느냐에 따라 사람의 분위기가 달라지듯</p>
+                <p>똑같은 영상이라도 음악의 분위기, 속도, 악기에 따라 전혀 다른 느낌을 전달합니다.</p>
+                <p>디테일한 영상 분석과 커뮤니케이션을 통해</p>
+                <p>더 높은 수준의 영상으로 끌어올립니다.</p>
               </div>
-            ))}
+            </div>
+            
+            {/* Profile 섹션 */}
+            <div className="text-center">
+              <div className="mb-6 font-semibold text-[18px] sm:text-[20px]">&lt;Profile&gt;</div>
+              <div className="text-[11px] sm:text-[12px] max-w-4xl mx-auto">
+                {profile.map((item, i) => (
+                  <div key={i} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0">
+                    <span className="w-16 text-gray-500 flex-shrink-0 text-left">{item.year}</span>
+                    <span className="flex-1 px-4 text-center">{item.work}</span>
+                    <span className="w-32 text-gray-400 flex-shrink-0 text-right">{item.role}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+        </main>
+      </div>
+      
+      {/* 구분선 */}
+      <div className="flex justify-center my-16">
+        <div className="w-24 h-[1px] bg-gray-300 opacity-60"></div>
+      </div>
+      
+      {/* 4단계 카드 그룹을 grid div 바로 아래, 본문 전체 아래에 독립적으로 위치 */}
+      <div className="card-group min-h-[320px] max-w-6xl mx-auto mt-0 mb-0">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+          {[
+            {
+              num: "01",
+              title: "COMMUNICATE",
+              desc: [
+                "클라이언트의 의도에 따라",
+                "다양한 방향성을 제시하여",
+                "음악의 분위기와 배치를 구상 및 설명합니다.",
+              ],
+            },
+            {
+              num: "02",
+              title: "DESIGN",
+              desc: [
+                "충분한 소통을 통해",
+                "조율 된 내용을 바탕으로",
+                "본격적인 제작을 진행합니다.",
+              ],
+            },
+            {
+              num: "03",
+              title: "DEVELOP",
+              desc: [
+                "완성된 음악을 전달하고,",
+                "다양한 변수에 따른",
+                "수정 및 보완 작업을 진행합니다.",
+              ],
+            },
+            {
+              num: "04",
+              title: "COMPLETE",
+              desc: [
+                "최종으로 마무리 된 음악을 영상에 입혀",
+                "클라이언트의 최종 점검을 받고",
+                "작업을 완료합니다.",
+              ],
+            },
+          ].map((step, index) => (
+            <div
+              key={step.num}
+              className={`card-animation card-animation-${index + 1} flex flex-col items-center`}
+              style={{
+                opacity: 0,
+                transform: 'translateX(-50px)',
+              }}
+            >
+              <div className="text-6xl text-gray-500 font-light mb-2">{step.num}</div>
+              <div className="tracking-[0.25em] text-xs font-semibold mb-4 text-gray-700">{step.title}</div>
+              <div className="w-8 h-[2px] bg-black mb-4" style={{ opacity: 0.5 }} />
+              <div className="text-[15px] text-gray-700 leading-relaxed">
+                {step.desc.map((line, idx) => (
+                  <div key={idx}>{line}</div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      </main>
+      </div>
       {/* 푸터 */}
       <footer id="contact-footer" className="bg-black text-gray-300 py-12 mt-0">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-8">
