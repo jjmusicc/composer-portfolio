@@ -29,354 +29,6 @@ body {
   font-family: var(--font-libre-baskerville), serif !important;
 }
 
-/* 완전히 새로운 레이아웃 시스템 */
-.home-container {
-  min-height: 100vh;
-  background: white;
-  color: black;
-  font-family: var(--font-libre-baskerville), serif;
-}
-
-/* CSS Grid 기반 메인 레이아웃 */
-.main-grid {
-  display: grid;
-  grid-template-areas: 
-    "studio"
-    "about"
-    "profile"
-    "divider"
-    "cards";
-  gap: 0;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/* 스튜디오 이미지 영역 - 항상 첫 번째 */
-.grid-area-studio {
-  grid-area: studio;
-  padding: 2rem 0;
-}
-
-.studio-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.studio-image {
-  width: 100%;
-  max-width: 555px;
-  height: auto;
-  object-fit: contain;
-}
-
-/* ABOUT US 영역 */
-.grid-area-about {
-  grid-area: about;
-  padding: 2rem 0;
-}
-
-.about-container {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.about-header {
-  margin-bottom: 2rem;
-}
-
-.about-subtitle {
-  font-size: 0.75rem;
-  color: #9ca3af;
-  margin-bottom: 0.5rem;
-}
-
-.about-title {
-  font-family: var(--font-libre-baskerville), serif;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.about-divider {
-  width: 4rem;
-  height: 1px;
-  background: #d1d5db;
-  margin: 0 auto;
-  opacity: 0.5;
-}
-
-.about-content {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: #6b7280;
-  max-width: 48rem;
-  margin: 0 auto;
-}
-
-.about-content p {
-  margin-bottom: 0.75rem;
-}
-
-/* Profile 영역 */
-.grid-area-profile {
-  grid-area: profile;
-  padding: 2rem 0;
-}
-
-.profile-container {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.profile-title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-}
-
-.profile-list {
-  font-size: 0.75rem;
-  max-width: 48rem;
-  margin: 0 auto;
-}
-
-.profile-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #f3f4f6;
-}
-
-.profile-item:last-child {
-  border-bottom: none;
-}
-
-.profile-year {
-  width: 4rem;
-  color: #6b7280;
-  text-align: left;
-  flex-shrink: 0;
-}
-
-.profile-work {
-  flex: 1;
-  padding: 0 1rem;
-  text-align: center;
-}
-
-.profile-role {
-  width: 8rem;
-  color: #9ca3af;
-  text-align: right;
-  flex-shrink: 0;
-}
-
-/* 구분선 영역 */
-.grid-area-divider {
-  grid-area: divider;
-  padding: 2rem 0;
-}
-
-.divider-line {
-  width: 6rem;
-  height: 1px;
-  background: #d1d5db;
-  margin: 0 auto;
-  opacity: 0.6;
-}
-
-/* 카드 영역 */
-.grid-area-cards {
-  grid-area: cards;
-  padding: 2rem 0;
-}
-
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  text-align: center;
-  min-height: 320px;
-}
-
-.process-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.card-number {
-  font-size: 3.75rem;
-  color: #6b7280;
-  font-weight: 300;
-  margin-bottom: 0.5rem;
-}
-
-.card-title {
-  letter-spacing: 0.1em;
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #374151;
-}
-
-.card-line {
-  width: 2rem;
-  height: 2px;
-  background: black;
-  margin-bottom: 1rem;
-  opacity: 0.5;
-}
-
-.card-description {
-  font-size: 0.9375rem;
-  color: #374151;
-  line-height: 1.6;
-}
-
-/* 푸터 */
-.footer {
-  background: black;
-  color: #d1d5db;
-  padding: 3rem 0;
-  margin-top: 0;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.footer-left {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  min-width: 220px;
-}
-
-.footer-title {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.footer-line {
-  width: 2rem;
-  height: 2px;
-  background: #9ca3af;
-}
-
-.footer-title span {
-  letter-spacing: 0.1em;
-  font-size: 1.125rem;
-  font-weight: 300;
-  color: #e5e7eb;
-}
-
-.footer-center {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  min-width: 220px;
-}
-
-.contact-item {
-  display: flex;
-  gap: 1rem;
-}
-
-.contact-label {
-  color: #9ca3af;
-}
-
-.footer-right {
-  flex: 1;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
-.copyright {
-  font-size: 0.75rem;
-  color: #6b7280;
-}
-
-/* 반응형 디자인 */
-@media (min-width: 768px) {
-  .main-grid {
-    padding: 0 2rem;
-  }
-  
-  .about-title {
-    font-size: 1.875rem;
-  }
-  
-  .profile-title {
-    font-size: 1.25rem;
-  }
-  
-  .profile-list {
-    font-size: 0.8125rem;
-  }
-  
-  .about-content {
-    font-size: 0.875rem;
-  }
-  
-  .cards-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  
-  .footer-content {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-}
-
-/* 애니메이션 */
-@keyframes slideInFromLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.card-animation {
-  will-change: transform, opacity;
-}
-
-.card-animation-1 {
-  animation: slideInFromLeft 0.8s ease-out 0s forwards;
-}
-
-.card-animation-2 {
-  animation: slideInFromLeft 0.8s ease-out 0.2s forwards;
-}
-
-.card-animation-3 {
-  animation: slideInFromLeft 0.8s ease-out 0.4s forwards;
-}
-
-.card-animation-4 {
-  animation: slideInFromLeft 0.8s ease-out 0.6s forwards;
-}
-
 /* 반응형 네비게이터 */
 .navbar-header {
   width: 100%;
@@ -581,4 +233,36 @@ body {
   .navbar-mobile {
     display: block;
   }
+}
+
+/* 애니메이션 */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.card-animation {
+  will-change: transform, opacity;
+}
+
+.card-animation-1 {
+  animation: slideInFromLeft 0.8s ease-out 0s forwards;
+}
+
+.card-animation-2 {
+  animation: slideInFromLeft 0.8s ease-out 0.2s forwards;
+}
+
+.card-animation-3 {
+  animation: slideInFromLeft 0.8s ease-out 0.4s forwards;
+}
+
+.card-animation-4 {
+  animation: slideInFromLeft 0.8s ease-out 0.6s forwards;
 }
