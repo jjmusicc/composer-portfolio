@@ -73,12 +73,12 @@ export default function Home() {
             {/* Profile 섹션 */}
             <div className="text-center lg:text-left">
               <div className="mb-6 font-semibold text-[18px] sm:text-[20px]">&lt;Profile&gt;</div>
-              <div className="text-[11px] sm:text-[12px] max-w-4xl mx-auto lg:mx-0">
+              <div className="profile-container text-[11px] sm:text-[12px] max-w-4xl mx-auto lg:mx-0">
                 {profile.map((item, i) => (
                   <div key={i} className="flex items-center justify-between py-1">
-                    <span className="w-16 text-gray-500 flex-shrink-0 text-left">{item.year}</span>
+                    <span className="profile-year w-16 text-gray-500 flex-shrink-0 text-left">{item.year}</span>
                     <span className="profile-work flex-1 px-4 text-center">{item.work}</span>
-                    <span className="w-32 text-right text-gray-400 flex-shrink-0">{item.role}</span>
+                    <span className="profile-role w-32 text-right text-gray-400 flex-shrink-0">{item.role}</span>
                   </div>
                 ))}
               </div>
