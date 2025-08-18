@@ -379,7 +379,7 @@ export default function ProjectsPage() {
             ))}
           </div>
           
-          {/* 사운드클라우드 프로젝트들 - 첫 번째 줄 (조심스러운 성공, 커피, 잔잔한 웃음) */}
+          {/* 사운드클라우드 프로젝트들 - 첫 번째 줄 (3개: 조심스러운 성공, 커피, 잔잔한 웃음) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {filtered.filter(p => p.soundcloud && (p.title.includes("조심스러운 성공") || p.title.includes("커피") || p.title.includes("잔잔한 웃음"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
@@ -402,7 +402,7 @@ export default function ProjectsPage() {
             ))}
           </div>
           
-          {/* 사운드클라우드 프로젝트들 - 두 번째 줄 (정이로운 이들이여, 어항과 물고기, 희망의 바다) */}
+          {/* 사운드클라우드 프로젝트들 - 두 번째 줄 (3개: 정이로운 이들이여, 어항과 물고기, 희망의 바다) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {filtered.filter(p => p.soundcloud && (p.title.includes("정이로운 이들이여") || p.title.includes("어항과 물고기") || p.title.includes("희망의 바다"))).map((p, i) => (
               <div key={i} className="flex flex-col items-start">
