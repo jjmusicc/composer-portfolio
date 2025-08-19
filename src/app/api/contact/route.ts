@@ -28,10 +28,16 @@ export async function POST(request: NextRequest) {
     }
 
     // Resend를 사용한 메일 전송
+    console.log('API Key:', process.env.RESEND_API_KEY ? '설정됨' : '설정되지 않음');
+    
+    if (!process.env.RESEND_API_KEY) {
+      throw new Error('RESEND_API_KEY가 설정되지 않았습니다.');
+    }
+    
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { data, error } = await resend.emails.send({
-      from: 'J&J Music <onboarding@resend.dev>', // 임시로 Resend 기본 도메인 사용
+      from: 'J&J Music <onboarding@resend.dev>', // 로컬 테스트용
       to: ['jjmusicc@naver.com'],
       subject: `[J&J Music] 새로운 문의 - ${name}`,
       html: `
