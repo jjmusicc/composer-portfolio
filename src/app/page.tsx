@@ -129,9 +129,9 @@ export default function Home() {
             {/* Profile 섹션 */}
             <div className="text-left">
               <div className="mb-6 font-semibold text-[18px] sm:text-[20px]">&lt;Profile&gt;</div>
-              <div className="profile-container text-[11px] sm:text-[12px] px-8">
+              <div className="profile-container text-[11px] sm:text-[12px] px-2 sm:px-4 md:px-8">
                 {profile.map((item, i) => (
-                  <div key={i} className="grid grid-cols-[4rem_1fr_8rem] items-center gap-x-4 py-1">
+                  <div key={i} className="grid grid-cols-[3.5rem_minmax(0,1fr)_max-content] md:grid-cols-[4rem_minmax(0,1fr)_7rem] items-center gap-x-0.5 md:gap-x-1 lg:gap-x-2 py-1">
                     <span className="profile-year text-gray-500 text-left">{item.year}</span>
                     <span className="profile-work min-w-0 truncate text-left">{item.work}</span>
                     <span className="profile-role text-left text-gray-400">{item.role}</span>

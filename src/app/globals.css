@@ -210,6 +210,10 @@ body {
 
 /* 768px 이하에서 모바일 스타일 적용 */
 @media (max-width: 768px) {
+  .profile-container > div {
+    column-gap: 0.5rem !important;
+  }
+  
   .navbar-container {
     flex-direction: row;
     justify-content: center;
@@ -237,6 +241,9 @@ body {
 
 /* 585px 이하에서 Profile 정렬 유지 */
 @media (max-width: 585px) {
+  .profile-container > div {
+    column-gap: 0.25rem !important;
+  }
   .profile-work {
     /* no horizontal shift; grid keeps alignment */
   }
@@ -244,22 +251,33 @@ body {
 
 /* 480px 이하에서 Profile 작품명 말줄임표 처리 */
 @media (max-width: 480px) {
+  .profile-container {
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+  }
+  .profile-container > div {
+    column-gap: 1px !important;
+    align-items: flex-start !important;
+    grid-template-columns: 2.5rem minmax(0, 1fr) max-content !important;
+  }
   .profile-work {
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
-    max-width: 100px !important;
+    max-width: 100% !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
     font-size: clamp(8px, 2vw, 12px) !important;
   }
   
   .profile-year {
     font-size: clamp(8px, 2vw, 12px) !important;
-    width: 3rem !important;
+    width: 2.75rem !important;
   }
   
   .profile-role {
     font-size: clamp(8px, 2vw, 12px) !important;
-    width: 6rem !important;
+    width: auto !important;
   }
 }
 
@@ -293,7 +311,7 @@ body {
     margin-top: 10px;
   }
   .profile-container > div {
-    column-gap: calc(1rem + 20px) !important;
+    column-gap: 0.75rem !important;
   }
   .profile-role {
     margin-left: 0;
