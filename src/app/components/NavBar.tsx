@@ -11,22 +11,13 @@ export default function NavBar() {
   const navs = [
     { name: "HOME", href: "/" },
     { name: "PROJECTS", href: "/projects" },
-    { name: "CONTACT", href: "/" },
+    { name: "CONTACT", href: "/contact" },
   ];
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsMenuOpen(false); // 모바일 메뉴 닫기
-    if (pathname === "/") {
-      // 메인 페이지에 있을 때는 푸터로 스크롤
-      document.getElementById('contact-footer')?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      // 다른 페이지에 있을 때는 메인 페이지로 이동 후 푸터로 스크롤
-      router.push('/');
-      setTimeout(() => {
-        document.getElementById('contact-footer')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
+    router.push('/contact');
   };
 
   const handleNavClick = () => {

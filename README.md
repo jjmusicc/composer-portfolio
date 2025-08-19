@@ -155,3 +155,33 @@ export default function Home() {
 **원하는 부분(프로필, 소개글, 사진 등)만 구체적으로 말씀해주시면  
 더 맞춤형으로 만들어드릴 수 있습니다!  
 바로 적용해드릴까요?**
+
+---
+
+## Contact 페이지 설정
+
+### Gmail SMTP 설정
+
+Contact 페이지에서 메일 전송 기능을 사용하려면 Gmail SMTP 설정이 필요합니다:
+
+1. **Gmail 앱 비밀번호 생성**:
+   - Gmail 계정에서 2단계 인증을 활성화
+   - Google 계정 설정 → 보안 → 앱 비밀번호 생성
+   - 생성된 16자리 앱 비밀번호를 복사
+
+2. **환경 변수 설정**:
+   프로젝트 루트에 `.env.local` 파일을 생성하고 다음 내용을 추가:
+   ```
+   GMAIL_USER=your-gmail@gmail.com
+   GMAIL_APP_PASSWORD=your-gmail-app-password
+   ```
+
+3. **보안 주의사항**:
+   - `.env.local` 파일은 절대 Git에 커밋하지 마세요
+   - `.gitignore`에 `.env.local`이 포함되어 있는지 확인하세요
+
+### Contact 페이지 기능
+- 미니멀한 디자인의 연락처 폼
+- 이름, 이메일, 메시지 입력 필드
+- 폼 제출 시 jjmusicc@naver.com으로 메일 전송
+- 성공/실패 상태 메시지 표시
