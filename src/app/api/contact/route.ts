@@ -37,8 +37,8 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { data, error } = await resend.emails.send({
-      from: 'J&J Music <onboarding@resend.dev>', // 로컬 테스트용
-      to: ['jjmusicc@naver.com'],
+      from: 'J&J Music <noreply@jjmusic.co.kr>', // 인증된 도메인 사용
+      to: ['jjmusicc@naver.com'], // Resend 계정 이메일
       subject: `[J&J Music] 새로운 문의 - ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
