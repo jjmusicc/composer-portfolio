@@ -48,10 +48,10 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-800 text-gray-200 font-sans">
+    <div className="min-h-screen bg-gray-800 text-gray-200 font-sans contact-page">
       <NavBar />
       
-      <main className="max-w-md mx-auto px-4 py-16">
+      <main className="max-w-md mx-auto px-4 py-8 md:py-16">
         {/* Header Section */}
         <div className="text-center mb-12">
           <h1 className="text-lg font-light tracking-wider mb-2">- CONTACT -</h1>

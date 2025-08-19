@@ -54,8 +54,10 @@ export default function NavBar() {
                   </Link>
                 )}
                 {nav.name === "CONTACT" ? (
-                  // CONTACT는 버튼이므로 표시선을 표시하지 않음
-                  null
+                  // CONTACT 페이지에서도 활성 상태 표시줄 표시
+                  pathname === "/contact" && (
+                    <span className="navbar-active-line"></span>
+                  )
                 ) : (
                   pathname === nav.href && (
                     <span className="navbar-active-line"></span>

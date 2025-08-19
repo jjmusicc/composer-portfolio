@@ -336,3 +336,31 @@ body {
   transform: translateX(0);
 }
 
+/* CONTACT 페이지에서 네비게이터 밝게 표시 */
+.contact-page .navbar-link,
+.contact-page .navbar-mobile-link,
+.contact-page .hamburger-line {
+  color: #ffffff !important;
+}
+
+.contact-page .navbar-active-line {
+  background: #ffffff !important;
+  opacity: 0.7 !important;
+}
+
+
+
+
+
+/* CONTACT 페이지에서 로고와 네비게이터를 왼쪽으로 3픽셀 이동 */
+.contact-page .navbar-container {
+  transform: translateX(-3px) !important;
+  position: relative;
+  left: -3px;
+}
+
+/* CONTACT 페이지에서 네비게이터 자간 미세 조정 */
+.contact-page .navbar-link {
+  letter-spacing: 0.08em !important;
+}
+

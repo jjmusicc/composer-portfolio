@@ -11,15 +11,16 @@ const projects = [
     youtube: "https://www.youtube.com/embed/iQ5kwOQogUg",
     desc: (
       <>
-        <div className="italic text-gray-400 mb-3" style={{ fontFamily: 'Questrial, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}>
+        <div className="italic text-gray-400 mt-4 mb-8" style={{ fontFamily: 'Questrial, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}>
           "15년 전에 특별한 곳에 갔었어요."
         </div>
-        <div className="mb-4" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.8' }}>
-          민우는 참제비꽃을 구하기 위해 여러 곳을 다니다 인터넷의 도움으로 미정의 꽃집까지 다다른다.<br/>
+        <div className="mb-12" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}>
+          민우는 참제비꽃을 구하기 위해 여러 곳을 다니다<br/>
+          인터넷의 도움으로 미정의 꽃집까지 다다른다.<br/>
           사람들이 잘 찾지 않는, 하지만 자신이 좋아하는,<br/>
           락스퍼를 찾는 민우에게 궁금증을 갖는 미정 그리고 민우의 특별한 이야기가 시작된다.
         </div>
-        <div className="text-xs text-gray-500" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.7' }}>
+        <div className="text-xs text-black" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.7' }}>
           [제2회 국제화해영화제] 도쿄 와세다大 새로운 시점상 수상<br/>
           [KB청춘마루] 청마 영화 상영제 상영작
         </div>
@@ -32,12 +33,12 @@ const projects = [
     youtube: "https://www.youtube.com/embed/DVREQhBETc4",
     desc: (
       <>
-        <div className="italic text-gray-400 mb-3" style={{ fontFamily: 'Questrial, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}>삽입곡 'Play with flower'</div>
-        <div className="mb-4" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.8' }}>
+        <div className="italic text-gray-400 mt-4 mb-8" style={{ fontFamily: 'Questrial, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}>삽입곡 'Play with flower'</div>
+        <div className="mb-12" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.6' }}>
           한국예술종합학교와 함께 제작되었으며<br/>
           작곡으로 참여하였습니다.
         </div>
-        <div className="text-xs text-gray-500" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.7' }}>
+        <div className="text-xs text-black" style={{ fontFamily: 'Noto Sans KR, sans-serif', fontSize: '13px !important', lineHeight: '1.7' }}>
           [2020 선댄스 영화제] VR 부분 초청작 선정<br/>
           [2020 레인댄스 영화제] 실감미디어 부문 최우수상 수상
         </div>
