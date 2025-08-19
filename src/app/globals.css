@@ -318,35 +318,21 @@ body {
   }
 }
 
-/* 애니메이션 */
-@keyframes slideInFromLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
+/* 카드 애니메이션 */
 .card-animation {
   will-change: transform, opacity;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.card-animation-1 {
-  animation: slideInFromLeft 0.8s ease-out 0s forwards;
+/* 초기 상태 - 모든 카드가 숨겨진 상태 */
+.card-animation {
+  opacity: 0;
+  transform: translateX(-30px);
 }
 
-.card-animation-2 {
-  animation: slideInFromLeft 0.8s ease-out 0.2s forwards;
-}
-
-.card-animation-3 {
-  animation: slideInFromLeft 0.8s ease-out 0.4s forwards;
-}
-
-.card-animation-4 {
-  animation: slideInFromLeft 0.8s ease-out 0.6s forwards;
+/* 애니메이션 완료 상태 */
+.card-animation.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 

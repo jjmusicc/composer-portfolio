@@ -37,7 +37,9 @@ export default function NavBar() {
     <header className="navbar-header">
       <div className="navbar-container">
         {/* 로고 */}
-        <div className="navbar-logo">J&J Music.</div>
+        <Link href="/" className="navbar-logo" onClick={handleNavClick}>
+          J&J Music.
+        </Link>
         
         {/* 데스크톱 네비게이션 */}
         <nav className="navbar-desktop">

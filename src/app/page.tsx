@@ -33,20 +33,6 @@ export default function Home() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    // 모바일에서만 애니메이션 적용
-    const isMobile = window.innerWidth < 768;
-    
-    if (!isMobile) {
-      // 데스크톱에서는 모든 카드를 바로 보이게 설정
-      cardRefs.current.forEach((card) => {
-        if (card) {
-          card.style.opacity = "1";
-          card.style.transform = "translateX(0)";
-        }
-      });
-      return;
-    }
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry, index) => {
@@ -55,16 +41,15 @@ export default function Home() {
             setTimeout(() => {
               if (entry.target) {
                 const target = entry.target as HTMLElement;
-                target.style.opacity = "1";
-                target.style.transform = "translateX(0)";
+                target.classList.add('visible');
               }
-            }, index * 200); // 각 카드마다 200ms 지연
+            }, index * 150); // 각 카드마다 150ms 지연
           }
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.2,
+        rootMargin: "0px 0px -100px 0px"
       }
     );
 
@@ -210,11 +195,7 @@ export default function Home() {
                 ref={(el) => {
                   cardRefs.current[index] = el;
                 }}
-                className={`card-animation card-animation-${index + 1} flex flex-col items-center transition-all duration-700 ease-out`}
-                style={{
-                  opacity: 0,
-                  transform: 'translateX(-50px)',
-                }}
+                className="card-animation flex flex-col items-center"
               >
                 <div className="text-6xl text-gray-500 font-light mb-2">{step.num}</div>
                 <div className="tracking-[0.25em] text-xs font-semibold mb-4 text-gray-700">{step.title}</div>
